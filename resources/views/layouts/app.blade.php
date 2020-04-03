@@ -46,5 +46,29 @@
             @yield('content')
         </main>
     </div>
+
+        <footer class="text-white bg-secondary">
+      <div class="container bg-secondary">
+
+
+        <p class="float-right mt-1 p-3 text-white">
+          <a href="#"><i class="fas fa-2x fa-angle-double-up text-white"></i></a>
+        </p>
+<div class="row">
+        
+              <p class="px-3">Tests Daily was created by the team at <a href="https://agstrategic.design">AG Strategic Design</a> .</p>
+
+              <p class="px-3">This site would not be possible without the data collected by the <a href="https://covidtracking.com" target="_blank">Covid Tracking project</a>. Data from the site is gathered using their <a href="https://covidtracking.com/api" target="_blank">API</a>.</p>
+</div>
+<div class="row mt-3 p-3">
+    
+
+    
+    <div class="col"><p class="text-center"><a href="https://agstrategic.design"><img src="https://static1.squarespace.com/static/5637dd4fe4b0fdf09da27c13/t/5a99e9cc8165f55874ff3a6c/1536621140361/?format=1500w" alt="AG Strategic Design" height=150 /></a></p></div>
+    
+</div>
+
+      </div>
+    </footer>
 </body>
 </html>

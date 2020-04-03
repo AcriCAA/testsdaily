@@ -13,7 +13,7 @@
 
     <p>This site allows you to view a side-by-side comparison of the daily change in the number of corona virus tests, infections and hospitalizations.</p>
 
-            <p>This site would not be possible without the data collected by the <a href="https://covidtracking.com" target="_blank">Covid Tracking project</a>. Data from the site is gathered using their <a href="https://covidtracking.com/api" target="_blank">API</a>.</p>
+           
 
             <p class=""><small >{{$total_tests_data_today[0]["lastModified"]}}</small></p>
 
@@ -135,6 +135,10 @@
 
               </div>
           </div>
+          <div class="row mt-3">
+            <div class="col">
+           <p>*This site would not be possible without the data collected by the <a href="https://covidtracking.com" target="_blank">Covid Tracking project</a>. Data from the site is gathered using their <a href="https://covidtracking.com/api" target="_blank">API</a>.</p>
+           </div>
       </div>
 
 
