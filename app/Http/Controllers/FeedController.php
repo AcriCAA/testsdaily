@@ -6,11 +6,36 @@ use Illuminate\Http\Request;
 
 use GuzzleHttp\Client;
 
+
+use App\Feed; 
 use Carbon\Carbon; 
 
 class FeedController extends Controller
 {
     //
+
+    public function index()
+    {
+        return view('testshome');
+    }
+
+    public function comparePage(){
+
+
+    		$this->validate(request(), [
+			//edit these to coressponding user fields
+			'state' => 'required', 
+			
+			
+			
+
+		]);
+
+    		$feed = new Feed(); 
+
+    		$feed->state = request('state'); 
+    		
+    }
 
     public function generateStateQuery($state){
 
