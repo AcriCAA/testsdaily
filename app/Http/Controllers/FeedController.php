@@ -25,6 +25,8 @@ class FeedController extends Controller
 
         $number_of_new_tests = $this->calculateNewTests($total_tests_data_today[0]["totalTestResults"]); 
 
+
+
         $selects = $this->generateDateSelectBox(); 
 
 
@@ -36,7 +38,7 @@ public function calculateNewTests($today_number_of_tests){
 
     $total_tests_previous_day = $this->previousDaysTests();
 
-    return $result = $today_number_of_tests - $total_tests_previous_day; 
+    return $result = (int)$today_number_of_tests - (int)$total_tests_previous_day; 
 
 }
 
@@ -45,7 +47,9 @@ public function previousDaysTests(){
 
     $previous_day_data = $this->getDailyTestsUS(); 
 
-    return $total_tests_previous_day = $previous_day_data["totalTestResults"]; 
+    // dd($previous_day_data);
+
+    return $previous_day_data["totalTestResults"]; 
 
 
 
@@ -57,10 +61,18 @@ public function getDailyTestsUS(){
 
     $all_day_data = $this->queryApi($query); 
 
-    return $previous_day_data = $all_day_data[0]; 
-
-
+    $today = Carbon::now();
+    $dt = new Carbon($today, 'America/New_York');
+    $previous_day = $dt->subDay(); 
+    $date_string = strtotime($previous_day); 
     
+    $formatted_date_value = date('Ymd', $date_string);
+
+    //find the data for the previous day
+    $key = array_search($formatted_date_value, array_column($all_day_data,'date'));
+
+    return $previous_day_data = $all_day_data[$key]; 
+
 
 }
 
