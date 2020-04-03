@@ -5,7 +5,7 @@
 	<h2 class="text-center">{{$feed->state}}</h2>
 	<h5 class="text-center">{{$feed->original_day_formatted}}</h5>
   <p class="text-center"><small >updated as of: {{$feed->page_data_day1["dateChecked"]}}</small></p>
-		<h3 class="text-center">Incresed Number of Tests from Previous Day: {{number_format($feed->page_data_day1["totalTestResultsIncrease"])}}</h3>
+		<h3 class="text-center">Increased Number of Tests from Previous Day: {{number_format($feed->page_data_day1["totalTestResultsIncrease"])}}</h3>
       
    <h4 class="text-center">hospitalized increase: 
       	{{number_format($feed->page_data_day1["hospitalizedIncrease"])}}</h4>
@@ -30,9 +30,9 @@
     <!--   <p class="card-text">hospitalizedIncrease: 
       	{{number_format($feed->page_data_day1["hospitalizedIncrease"])}}</p>
         <hr class="my-1"> -->
-      	<p class="card-text">negativeIncrease: {{number_format($feed->page_data_day1["negativeIncrease"])}}</p>
+      	<p class="card-text">negative increase: {{number_format($feed->page_data_day1["negativeIncrease"])}}</p>
         <hr class="my-1">
-      	<p class="card-text">positiveIncrease: {{number_format($feed->page_data_day1["positiveIncrease"])}}</p>
+      	<p class="card-text">positive increase: {{number_format($feed->page_data_day1["positiveIncrease"])}}</p>
         
       	
     </div>
@@ -56,9 +56,9 @@
     <!--   <p class="card-text">hospitalizedIncrease: 
       	{{number_format($feed->page_data_day2["hospitalizedIncrease"])}}</p>
         <hr class="my-1"> -->
-      	<p class="card-text">negativeIncrease: {{number_format($feed->page_data_day2["negativeIncrease"])}}</p>
+      	<p class="card-text">negative increase: {{number_format($feed->page_data_day2["negativeIncrease"])}}</p>
         <hr class="my-1">
-      	<p class="card-text">positiveIncrease: {{number_format($feed->page_data_day2["positiveIncrease"])}}</p>
+      	<p class="card-text">positive increase: {{number_format($feed->page_data_day2["positiveIncrease"])}}</p>
 
       	
     </div>
