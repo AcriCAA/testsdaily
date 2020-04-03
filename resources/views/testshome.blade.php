@@ -32,7 +32,7 @@
 
 
 
-            <h2>Test Comparison by State</h2>
+            <h2>Comparison by State</h2>
             <form method="POST" action="/compare">
 
 
@@ -61,7 +61,13 @@
                                     <option value="{{$select[0]}}">{{$select[1]}}</option>
                                     @endforeach
                                 </select>
-                                to previous day's data in      
+                            </label>
+                        </fieldset>
+
+                        <fieldset>
+
+                            <label>
+                                to previous day's data in:      
 
                             <select name="state">
                                 <option value="AL">Alabama</option>
