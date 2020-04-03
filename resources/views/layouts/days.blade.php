@@ -3,7 +3,8 @@
 @section('content')
 
 	<h2 class="text-center">{{$feed->state}}</h2>
-	<h5 class="text-center">{{$feed->original_day}}</h5>
+	<h5 class="text-center">{{$feed->original_day_formatted}}</h5>
+  <p class="text-center"><small >updated as of: {{$feed->page_data_day1["dateChecked"]}}</small></p>
 		<h3 class="text-center">Incresed Number of Tests from Previous Day: {{$feed->page_data_day1["totalTestResultsIncrease"]}}</h3>
       
    <h4 class="text-center">hospitalizedIncrease: 
@@ -13,7 +14,7 @@
   <div class="card">
     
     <div class="card-body">
-      <h5 class="card-title">Selected Date: {{$feed->original_day}}</h5>
+      <h3 class="card-title">{{$feed->original_day_formatted}}</h3>
       
       
 
@@ -33,7 +34,7 @@
   <div class="card">
     
     <div class="card-body">
-      <h5 class="card-title">Selected Date: {{$feed->previous_day}}</h5>
+      <h3 class="card-title">{{$feed->previous_day_formatted}}</h3>
       
       
 

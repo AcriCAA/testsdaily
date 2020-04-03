@@ -74,28 +74,8 @@ class FeedController extends Controller
 
          $today = Carbon::now();
 
-        
-
-        
 
         $dt = new Carbon($today, 'America/New_York');
-
-        // $date = $dt->toDateTimeString();
-
-
-
-        // $date_string = strtotime($date); 
-
-
-
-        // $formatted_date_value = date('Ymd', $date_string);
-
-        // // dd($formatted_date_value); 
-
-        // $date_word = date("F j, Y", $date_string); 
-
-
-        // $select_array = [$formatted_date_value, $date_word]; 
 
         $select_array = [];
 
@@ -117,17 +97,18 @@ class FeedController extends Controller
 
 
         }
-
           
 
-
-
-        // dd($selects);
-
         return $selects; 
+ 
 
-        // return $dates_html; 
+    }
 
+    public function formatDate($date){
+
+         $datestring = strtotime($date);
+
+         return date("F j, Y", $datestring);
     }
 
     public function comparePage(){
@@ -145,7 +126,15 @@ class FeedController extends Controller
     		$feed = new Feed(); 
 
     		$feed->original_day = $this->parseDate(request('datepicker')); 
+
+        
+
+
+            $feed->original_day_formatted = $this->formatDate($feed->original_day); 
+
     		$feed->previous_day = $this->parsePreviousDate($feed->original_day);
+
+            $feed->previous_day_formatted = $this->formatDate($feed->previous_day); 
 
     		$feed->state = request('state'); 
 
@@ -186,13 +175,7 @@ class FeedController extends Controller
     	//run the queries to generate page
     	$page_data_day1 = $this->queryApi($query1); 
     	$page_data_day2 = $this->queryApi($query2); 
-    	echo '<pre>';
-    	var_dump($page_data_day1);
-    	echo '</pre>';
-
-    	echo '<pre>';
-    	var_dump($page_data_day2);
-    	echo '</pre>';
+ 
 
     }
 
@@ -202,7 +185,7 @@ class FeedController extends Controller
     		//day and state comes from form submission
     	
     	return $query = "states/daily?state=".$state; 
-    		// NY&date=".$state; 
+    		
     
 
     }
@@ -212,16 +195,10 @@ class FeedController extends Controller
 
   //  
 	$datestring = strtotime($date_from_form); 
-	// $timelogged_timestamp_string = Carbon::parse($date_from_form);
-	// $time = strtotime($time); 
-
-	// $date = $day + $time;
-	//converting the datestring to the format of timelogged  
+	
 	return $datestring = date('Ymd', $datestring);
 
-	// $timelogged_timestamp = Carbon::parse($date_from_form, 'UTC');
-
-		 
+	 
     }
 
      public function parsePreviousDate($date_from_form){
