@@ -10,6 +10,9 @@
    <h4 class="text-center">hospitalized increase: 
       	{{number_format($feed->page_data_day1["hospitalizedIncrease"])}}</h4>
 
+        <!-- eg https://covidtracking.com/api/states/daily?state=NY&date=20200316 -->
+      <p class="text-center"><small><a href="https://covidtracking.com/api/states/daily?state={{$feed->state}}&date={{$feed->original_day}}">source</a></small></p>
+
 	<div class="card-group">
   <div class="card">
     
