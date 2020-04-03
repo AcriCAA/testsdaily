@@ -25,7 +25,7 @@ class FeedController extends Controller
     		$this->validate(request(), [
 			//edit these to coressponding user fields
 			'state' => 'required', 
-			
+			'datepicker' => 'required'  
 			
 			
 
@@ -33,9 +33,58 @@ class FeedController extends Controller
 
     		$feed = new Feed(); 
 
+    		$feed->original_day = $this->parseDate(request('datepicker')); 
+    		$feed->previous_day = $this->parsePreviousDate($feed->original_day);
+
     		$feed->state = request('state'); 
-    		
+
+    		$feed->state_query = $this->generateStateQuery($feed->state); 
+
+    		//compile the query string
+    		$feed->query1 = $this->compileQuery($feed->state_query, $feed->original_day); 
+
+    		$feed->query2 = $this->compileQuery($feed->state_query, $feed->previous_day); 
+
+    	//run the queries to generate page
+    	$feed->page_data_day1 = $this->queryApi($feed->query1); 
+    	$feed->page_data_day2 = $this->queryApi($feed->query2); 
+    	// dd($feed); 
+    		return view('layouts.days',compact('feed')); 
+
     }
+
+     public function compilePageData(){
+
+    	$date1_from_form = '2020-03-31 11:08 AM';
+    	$date2_from_form = '2020-03-30 11:08 AM';
+
+    	$state_from_form = 'PA'; 
+
+    	$day1 = $this->parseDate($date1_from_form); 
+    	$day2 = $this->parseDate($date2_from_form); 
+
+    	$state = $state_from_form; 
+
+    	$state_query = $this->generateStateQuery($state); 
+
+    	//compile the query string
+    	$query1 = $this->compileQuery($state_query, $day1); 
+
+    	$query2 = $this->compileQuery($state_query, $day2); 
+
+    	//run the queries to generate page
+    	$page_data_day1 = $this->queryApi($query1); 
+    	$page_data_day2 = $this->queryApi($query2); 
+    	echo '<pre>';
+    	var_dump($page_data_day1);
+    	echo '</pre>';
+
+    	echo '<pre>';
+    	var_dump($page_data_day2);
+    	echo '</pre>';
+
+    }
+
 
     public function generateStateQuery($state){
 
@@ -58,6 +107,24 @@ class FeedController extends Controller
 	// $date = $day + $time;
 	//converting the datestring to the format of timelogged  
 	return $datestring = date('Ymd', $datestring);
+
+	// $timelogged_timestamp = Carbon::parse($date_from_form, 'UTC');
+
+		 
+    }
+
+     public function parsePreviousDate($date_from_form){
+
+  //  
+	$datestring = strtotime($date_from_form); 
+	
+	$dt = new Carbon($datestring, 'America/New_York');
+
+	$previous = $dt->subDay(); 
+
+	$previous_date_string = strtotime($previous); 
+	
+	return $datestring = date('Ymd', $previous_date_string);
 
 	// $timelogged_timestamp = Carbon::parse($date_from_form, 'UTC');
 
@@ -90,38 +157,7 @@ class FeedController extends Controller
 
     }
 
-    public function compilePageData(){
-
-    	$date1_from_form = '2020-03-31 11:08 AM';
-    	$date2_from_form = '2020-03-30 11:08 AM';
-
-    	$state_from_form = 'PA'; 
-
-    	$day1 = $this->parseDate($date1_from_form); 
-    	$day2 = $this->parseDate($date2_from_form); 
-
-    	$state = $state_from_form; 
-
-    	$state_query = $this->generateStateQuery($state); 
-
-    	//compile the query string
-    	$query1 = $this->compileQuery($state_query, $day1); 
-
-    	$query2 = $this->compileQuery($state_query, $day2); 
-
-    	//run the queries to generate page
-    	$page_data_day1 = $this->queryApi($query1); 
-    	$page_data_day2 = $this->queryApi($query2); 
-    	echo '<pre>';
-    	var_dump($page_data_day1);
-    	echo '</pre>';
-
-    	echo '<pre>';
-    	var_dump($page_data_day2);
-    	echo '</pre>';
-
-    }
-
+   
     public function queryAPI($query){
 		$client = new Client();
 
