@@ -19,14 +19,21 @@
       
 
       <p class="card-text">Total Tests: {{number_format($feed->page_data_day1["total"])}}</p>
+      <hr class="my-1">
       <p class="card-text">postive: {{number_format($feed->page_data_day1["positive"])}}</p>
+      <hr class="my-1">
       <p class="card-text">negative: {{number_format($feed->page_data_day1["negative"])}}</p>
+      <hr class="my-1">
       
       <p class="card-text">hospitalized: {{number_format($feed->page_data_day1["hospitalized"])}}</p>
+      <hr class="my-1">
     <!--   <p class="card-text">hospitalizedIncrease: 
-      	{{number_format($feed->page_data_day1["hospitalizedIncrease"])}}</p> -->
+      	{{number_format($feed->page_data_day1["hospitalizedIncrease"])}}</p>
+        <hr class="my-1"> -->
       	<p class="card-text">negativeIncrease: {{number_format($feed->page_data_day1["negativeIncrease"])}}</p>
+        <hr class="my-1">
       	<p class="card-text">positiveIncrease: {{number_format($feed->page_data_day1["positiveIncrease"])}}</p>
+        
       	
     </div>
   </div>
@@ -38,14 +45,21 @@
       
 
       <p class="card-text">Total Tests: {{number_format($feed->page_data_day2["total"])}}</p>
+      <hr class="my-1">
       <p class="card-text">postive: {{number_format($feed->page_data_day2["positive"])}}</p>
+      <hr class="my-1">
       <p class="card-text">negative: {{number_format($feed->page_data_day2["negative"])}}</p>
+      <hr class="my-1">
       
       <p class="card-text">hospitalized: {{number_format($feed->page_data_day2["hospitalized"])}}</p>
+      <hr class="my-1">
     <!--   <p class="card-text">hospitalizedIncrease: 
-      	{{number_format($feed->page_data_day2["hospitalizedIncrease"])}}</p> -->
+      	{{number_format($feed->page_data_day2["hospitalizedIncrease"])}}</p>
+        <hr class="my-1"> -->
       	<p class="card-text">negativeIncrease: {{number_format($feed->page_data_day2["negativeIncrease"])}}</p>
+        <hr class="my-1">
       	<p class="card-text">positiveIncrease: {{number_format($feed->page_data_day2["positiveIncrease"])}}</p>
+
       	
     </div>
   </div>

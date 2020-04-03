@@ -4,35 +4,36 @@
 <div class="container">
 
 
+<div class="jumbotron">
+  <h1 class="display-4">United States COVID Tests</h1>
+   
 
-    <div class="row justify-content-center">
-        <div class="col">
+  <hr class="my-4">
+  
 
-            <h1 class="text-center">United States COVID Tests Today</h1>
-            <p class="text-center"><small >{{$total_tests_data_today[0]["lastModified"]}}</small></p>
-
-            <h2 class="text-center">{{number_format($number_of_new_tests)}} new tests today</h2>
-
-            <h2 class="text-center">{{number_format($total_tests_data_today[0]["totalTestResults"])}} total</h2>
-
-            
-            
-
-
-            <p>This site allows you to view a side-by-side comparison of the daily change in the number of corona virus tests, infections and hospitalizations.</p>
+    <p>This site allows you to view a side-by-side comparison of the daily change in the number of corona virus tests, infections and hospitalizations.</p>
 
             <p>This site would not be possible without the data collected by the <a href="https://covidtracking.com" target="_blank">Covid Tracking project</a>. Data from the site is gathered using their <a href="https://covidtracking.com/api" target="_blank">API</a>.</p>
 
-        </div>
-    </div>
+            <p class=""><small >{{$total_tests_data_today[0]["lastModified"]}}</small></p>
 
+<div class="row">
+    <div class="col border-right border-primary">
 
-    <div class="row justify-content-center">
+<h2>U.S. Tests Today</h2>
+
+  <h2 class="lead border-left border-warning p-2"> {{number_format($number_of_new_tests)}} new tests today</h2>
+   <h2 class="lead border-left border-danger p-2"> {{number_format($total_tests_data_today[0]["totalTestResults"])}} total</h2>
+</div>
+
+       {{-- <div class="row justify-content-center mt-2"> --}}
         <div class="col">
 
 
 
-            <h2>Comparison by State</h2>
+
+
+            <h2>State Tests</h2>
             <form method="POST" action="/compare">
 
 
@@ -139,3 +140,11 @@
 
 
       @endsection
+  
+</div>
+
+
+ 
+
+
+
