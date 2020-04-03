@@ -101,7 +101,7 @@ class FeedController extends Controller
 
         
 
-        for ($i = 1; $i <= 31;$i++){
+        for ($i = 1; $i <= 15;$i++){
 
             $dt = new Carbon($today, 'America/New_York');
             $previous_day = $dt->subDay($i); 
