@@ -16,7 +16,118 @@ class FeedController extends Controller
 
     public function index()
     {
-        return view('testshome');
+
+        $query = 'US'; 
+
+        
+
+        $total_tests_data_today = $this->queryApi($query); 
+
+        $number_of_new_tests = $this->calculateNewTests($total_tests_data_today[0]["totalTestResults"]); 
+
+        $selects = $this->generateDateSelectBox(); 
+
+
+         
+        return view('testshome', compact('total_tests_data_today', 'number_of_new_tests', 'selects'));
+    }
+
+    public function calculateNewTests($today_number_of_tests){
+
+        $total_tests_previous_day = $this->previousDaysTests();
+
+        return $result = $today_number_of_tests - $total_tests_previous_day; 
+
+    }
+
+
+    public function previousDaysTests(){
+
+        $previous_day_data = $this->getDailyTestsUS(); 
+
+        return $total_tests_previous_day = $previous_day_data["totalTestResults"]; 
+
+
+
+    }
+
+    public function getDailyTestsUS(){
+
+        $query = "USDAILY"; 
+
+        $all_day_data = $this->queryApi($query); 
+
+        return $previous_day_data = $all_day_data[0]; 
+
+
+        
+
+    }
+
+
+    public function generateDateSelectBox(){
+
+         $selects = []; 
+
+
+        // $today = Carbon::today();
+
+         $today = Carbon::now();
+
+        
+
+        
+
+        $dt = new Carbon($today, 'America/New_York');
+
+        // $date = $dt->toDateTimeString();
+
+
+
+        // $date_string = strtotime($date); 
+
+
+
+        // $formatted_date_value = date('Ymd', $date_string);
+
+        // // dd($formatted_date_value); 
+
+        // $date_word = date("F j, Y", $date_string); 
+
+
+        // $select_array = [$formatted_date_value, $date_word]; 
+
+        $select_array = [];
+
+        
+
+        for ($i = 1; $i <= 31;$i++){
+
+            $dt = new Carbon($today, 'America/New_York');
+            $previous_day = $dt->subDay($i); 
+            $date_string = strtotime($previous_day); 
+
+            $formatted_date_value = date('Ymd', $date_string);
+
+        $date_word = date("F j, Y", $date_string); 
+
+        $select_array = [$formatted_date_value, $date_word]; 
+
+        $selects[] = $select_array; 
+
+
+        }
+
+          
+
+
+
+        // dd($selects);
+
+        return $selects; 
+
+        // return $dates_html; 
+
     }
 
     public function comparePage(){
@@ -132,25 +243,6 @@ class FeedController extends Controller
     }
 
 
-    // public function generateDate($date){
-
-    	
-
-    // 	if($yesterday = TRUE){
-
-    // 		$day = $today->
-    // 	}
-
-    // 	if($today = FALSE){
-
-    // 		$day = $today->subDays(2); 
-
-    // 	}
-
-    // 	// is the date today or yesterday
-
-    // }
-
     public function compileQuery($statequery, $day){
 
     	return $query = $statequery."&date=".$day;
@@ -161,14 +253,30 @@ class FeedController extends Controller
     public function queryAPI($query){
 		$client = new Client();
 
-
-		$base_url = env('BASE_URL');
-		$apikey = env('API_KEY'); 
+        $base_url = env('BASE_URL');
+        
+        
+        $curlstring = $base_url; 
+        if($query == 'US'){
 		
-		$curlstring = $base_url; 
 
-		$curlstring.= $query; 
+		$curlstring.= 'us'; 
 
+        }
+
+        elseif ($query == 'USDAILY') {
+            $curlstring.= 'us/daily'; 
+        }
+
+        else{
+            $base_url = env('BASE_URL');
+        
+        
+        $curlstring = $base_url; 
+
+        $curlstring.= $query; 
+
+        }
 
 		$response = $client->get($curlstring);
     

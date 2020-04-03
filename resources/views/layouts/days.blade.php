@@ -4,7 +4,7 @@
 
 	<h2 class="text-center">{{$feed->state}}</h2>
 	<h5 class="text-center">{{$feed->original_day}}</h5>
-		<h3 class="text-center">totalTestResultsIncrease: {{$feed->page_data_day1["totalTestResultsIncrease"]}}</h3>
+		<h3 class="text-center">Incresed Number of Tests from Previous Day: {{$feed->page_data_day1["totalTestResultsIncrease"]}}</h3>
       
    <h4 class="text-center">hospitalizedIncrease: 
       	{{$feed->page_data_day1["hospitalizedIncrease"]}}</h4>

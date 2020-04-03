@@ -2,16 +2,39 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+
+    
+
+        <div class="row justify-content-center">
         <div class="col">
 
             <h1 class="text-center">Tests Today</h1>
+            <p class="text-center"><small >{{$total_tests_data_today[0]["lastModified"]}}</small></p>
+
+            <h2 class="text-center">{{$number_of_new_tests}} new tests today</h2>
+
+            <h2 class="text-center">{{$total_tests_data_today[0]["totalTestResults"]}} total</h2>
+
+            
+            
+
+
             <p>This site allows you to view a side-by-side comparison of the daily change in the number of corona virus tests, infections and hospitalizations.</p>
 
             <p>This site would not be possible without the data collected by the <a href="https://covidtracking.com" target="_blank">Covid Tracking project</a>. Data from the site is gathered using their <a href="https://covidtracking.com/api" target="_blank">API</a>.</p>
 
+        </div>
+        </div>
+
+
+    <div class="row justify-content-center">
+        <div class="col">
+
+            
+
             <h2>Test Comparison by State</h2>
             <form method="POST" action="/compare">
+
 
 {{-- include csrf field in all of our forms for authentication --}}
      {{ csrf_field() }}
@@ -19,17 +42,25 @@
      <div class="form-group">
 
                 <fieldset>
-                    <legend>Date</legend>
+                    
 
                     <div>
                         
 
                         {{-- Have to convert from string to unix using strtotime and then to SQL time --}}
-                        <input type="datepicker" id="datepicker" name="datepicker"
+                      {{--   <input type="datepicker" id="datepicker" name="datepicker"
 
                         min="2020-03-04" max="2200-12-31"   
-                        required />
-                        
+                        required /> --}}
+
+                          <legend>Select date</legend>
+            <label>Compare 
+            <select name="datepicker">
+@foreach($selects as $select)
+    <option value="{{$select[0]}}">{{$select[1]}}</option>
+@endforeach
+</select>
+            to previous day</label>          
                     </div>
                        <!-- <c-datepicker></c-datepicker> -->
                     
