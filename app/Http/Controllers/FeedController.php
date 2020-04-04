@@ -60,17 +60,23 @@ $feed->previous_day_formatted = $feed->formatDate($feed->previous_day);
 
 $feed->state = request('state'); 
 
-$feed->state_query = $this->generateStateQuery($feed->state); 
+$feed->state_query = $feed->generateStateQuery($feed->state); 
 
     		//compile the query string
-$feed->query1 = $this->compileQuery($feed->state_query, $feed->original_day); 
+$feed->query1 = $feed->compileQuery($feed->state_query, $feed->original_day); 
 
-$feed->query2 = $this->compileQuery($feed->state_query, $feed->previous_day); 
+$feed->query2 = $feed->compileQuery($feed->state_query, $feed->previous_day); 
 
     	//run the queries to generate page but json encode them because you are gooing to save them
-$feed->page_data_day1 = json_encode($this->queryApi($feed->query1), TRUE); 
-$feed->page_data_day2 = json_encode($this->queryApi($feed->query2), TRUE); 
+
+// $feed->page_data_day1 = serialize(json_encode($this->queryApi($feed->query1))); 
+// $feed->page_data_day2 = serialize(json_encode($this->queryApi($feed->query2))); 
+
+$feed->page_data_day1 = $this->queryApi($feed->query1); 
+$feed->page_data_day2 = $this->queryApi($feed->query2); 
+
     	
+
 $feed->save();
 
 return redirect()->route('compare', $feed);
@@ -78,7 +84,6 @@ return redirect()->route('compare', $feed);
 }
 
 public function show(Feed $feed){
-
 
 	return view('layouts.days',compact('feed'));
 
@@ -163,59 +168,6 @@ public function generateDateSelectBox(){
 
 return $selects; 
 
-
-}
-
-
-
-
-
-public function compilePageData(){
-
-   $date1_from_form = '2020-03-31 11:08 AM';
-   $date2_from_form = '2020-03-30 11:08 AM';
-
-   $state_from_form = 'PA'; 
-
-   $day1 = $this->parseDate($date1_from_form); 
-   $day2 = $this->parseDate($date2_from_form); 
-
-   $state = $state_from_form; 
-
-   $state_query = $this->generateStateQuery($state); 
-
-    	//compile the query string
-   $query1 = $this->compileQuery($state_query, $day1); 
-
-   $query2 = $this->compileQuery($state_query, $day2); 
-
-    	//run the queries to generate page
-   $page_data_day1 = $this->queryApi($query1); 
-   $page_data_day2 = $this->queryApi($query2); 
-   
-
-}
-
-
-public function generateStateQuery($state){
-
-    		//day and state comes from form submission
-   
-   return $query = "states/daily?state=".$state; 
-   
-   
-
-}
-
-
-
-
-
-
-
-public function compileQuery($statequery, $day){
-
-   return $query = $statequery."&date=".$day;
 
 }
 
