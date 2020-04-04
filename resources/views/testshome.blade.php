@@ -36,7 +36,7 @@
         <div class="col">
 
                     <h2>State Tests</h2>
-                    <form method="POST" action="/compare">
+                    <form method="POST" action="/store">
 
 
                         {{-- include csrf field in all of our forms for authentication --}}

@@ -19,6 +19,8 @@ Auth::routes(['register' => false]);
 
 Route::get('/', 'FeedController@index'); 
 
-Route::post('/compare', 'FeedController@comparePage'); 
+Route::post('/store', 'FeedController@comparePage'); 
 
 Route::get('/dates', 'FeedController@generateDateSelectBox'); 
+
+Route::get('/compare/{feed}','FeedController@show')->name('compare');

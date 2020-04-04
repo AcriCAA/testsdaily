@@ -26,12 +26,62 @@ class FeedController extends Controller
         $number_of_new_tests = $this->calculateNewTests($total_tests_data_today[0]["totalTestResults"]); 
 
 
-
         $selects = $this->generateDateSelectBox(); 
-
 
         
         return view('testshome', compact('total_tests_data_today', 'number_of_new_tests', 'selects'));
+}
+
+
+public function comparePage(){
+
+
+  $this->validate(request(), [
+			//edit these to coressponding user fields
+     'state' => 'required', 
+     'datepicker' => 'required'  
+     
+     
+
+ ]);
+
+$feed = new Feed(); 
+
+$feed->original_day = $feed->parseDate(request('datepicker')); 
+
+
+
+
+$feed->original_day_formatted = $feed->formatDate($feed->original_day); 
+
+$feed->previous_day = $feed->parsePreviousDate($feed->original_day);
+
+$feed->previous_day_formatted = $feed->formatDate($feed->previous_day); 
+
+$feed->state = request('state'); 
+
+$feed->state_query = $this->generateStateQuery($feed->state); 
+
+    		//compile the query string
+$feed->query1 = $this->compileQuery($feed->state_query, $feed->original_day); 
+
+$feed->query2 = $this->compileQuery($feed->state_query, $feed->previous_day); 
+
+    	//run the queries to generate page but json encode them because you are gooing to save them
+$feed->page_data_day1 = json_encode($this->queryApi($feed->query1), TRUE); 
+$feed->page_data_day2 = json_encode($this->queryApi($feed->query2), TRUE); 
+    	
+$feed->save();
+
+return redirect()->route('compare', $feed);
+    	
+}
+
+public function show(Feed $feed){
+
+
+	return view('layouts.days',compact('feed'));
+
 }
 
 public function calculateNewTests($today_number_of_tests){
@@ -116,54 +166,9 @@ return $selects;
 
 }
 
-public function formatDate($date){
-
-   $datestring = strtotime($date);
-
-   return date("F j, Y", $datestring);
-}
-
-public function comparePage(){
-
-
-  $this->validate(request(), [
-			//edit these to coressponding user fields
-     'state' => 'required', 
-     'datepicker' => 'required'  
-     
-     
-
- ]);
-
-$feed = new Feed(); 
-
-$feed->original_day = $this->parseDate(request('datepicker')); 
 
 
 
-
-$feed->original_day_formatted = $this->formatDate($feed->original_day); 
-
-$feed->previous_day = $this->parsePreviousDate($feed->original_day);
-
-$feed->previous_day_formatted = $this->formatDate($feed->previous_day); 
-
-$feed->state = request('state'); 
-
-$feed->state_query = $this->generateStateQuery($feed->state); 
-
-    		//compile the query string
-$feed->query1 = $this->compileQuery($feed->state_query, $feed->original_day); 
-
-$feed->query2 = $this->compileQuery($feed->state_query, $feed->previous_day); 
-
-    	//run the queries to generate page
-$feed->page_data_day1 = $this->queryApi($feed->query1); 
-$feed->page_data_day2 = $this->queryApi($feed->query2); 
-    	// dd($feed); 
-return view('layouts.days',compact('feed')); 
-
-}
 
 public function compilePageData(){
 
@@ -203,33 +208,9 @@ public function generateStateQuery($state){
 }
 
 
-public function parseDate($date_from_form){
 
-  //  
-	$datestring = strtotime($date_from_form); 
-	
-	return $datestring = date('Ymd', $datestring);
 
-  
-}
 
-public function parsePreviousDate($date_from_form){
-
-  //  
-	$datestring = strtotime($date_from_form); 
-	
-	$dt = new Carbon($datestring, 'America/New_York');
-
-	$previous = $dt->subDay(); 
-
-	$previous_date_string = strtotime($previous); 
-	
-	return $datestring = date('Ymd', $previous_date_string);
-
-	// $timelogged_timestamp = Carbon::parse($date_from_form, 'UTC');
-
- 
-}
 
 
 public function compileQuery($statequery, $day){
