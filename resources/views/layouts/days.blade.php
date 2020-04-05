@@ -24,10 +24,7 @@
 
     
     
-    @if(!empty($feed->page_data_day1["total"]))
-     <p class="card-text">Total Tests: {{number_format($feed->page_data_day1["total"])}}</p>
-      <hr class="my-1">
-    @endif
+   
 
     @if(!empty($feed->page_data_day1["positive"]))
       <p class="card-text">postive: {{number_format($feed->page_data_day1["positive"])}}</p>
@@ -45,7 +42,7 @@
     @endif
 
     @if(!empty($feed->page_data_day1["hospitalizedIncrease"]))
-    <p class="card-text">hospitalizedIncrease: 
+    <p class="card-text">hospitalized increase: 
       	{{number_format($feed->page_data_day1["hospitalizedIncrease"])}}</p>
         <hr class="my-1">
     @endif
@@ -58,7 +55,13 @@
 
       @if(!empty($feed->page_data_day1["positiveIncrease"]))
       	<p class="card-text">positive increase: {{number_format($feed->page_data_day1["positiveIncrease"])}}</p>
+        <hr class="my-1">
       @endif
+
+       @if(!empty($feed->page_data_day1["total"]))
+     <p class="card-text">cumulative tests completed since testing began: {{number_format($feed->page_data_day1["total"])}}</p>
+      
+    @endif
         
       	
     </div>
@@ -70,11 +73,7 @@
       
       
 
-      @if(!empty($feed->page_data_day2["total"]))
-      <p class="card-text">Total Tests: {{number_format($feed->page_data_day2["total"])}}</p>
-      <hr class="my-1">
-      @endif
-
+     
 
       @if(!empty($feed->page_data_day2["positive"]))
       <p class="card-text">postive: {{number_format($feed->page_data_day2["positive"])}}</p>
@@ -92,7 +91,7 @@
     @endif
 
     @if(!empty($feed->page_data_day2["hospitalizedIncrease"]))
-      <p class="card-text">hospitalizedIncrease: 
+      <p class="card-text">hospitalized increase: 
       	{{number_format($feed->page_data_day2["hospitalizedIncrease"])}}</p>
         <hr class="my-1">
       @endif
@@ -104,7 +103,14 @@
 
     @if(!empty($feed->page_data_day2["positiveIncrease"]))
       	<p class="card-text">positive increase: {{number_format($feed->page_data_day2["positiveIncrease"])}}</p>
+        <hr class="my-1">
     @endif
+
+     @if(!empty($feed->page_data_day2["total"]))
+      <p class="card-text">cumulative tests since testing began: {{number_format($feed->page_data_day2["total"])}}</p>
+      
+      @endif
+
 
       	
     </div>

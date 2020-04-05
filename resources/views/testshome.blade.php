@@ -21,19 +21,17 @@
             <h2>U.S. Tests Today</h2>
             <p class=""><small >{{$total_tests_data_today[0]["lastModified"]}}</small></p>
 
-            <h2 class="lead border-left border-warning p-2"> {{number_format($number_of_new_tests)}} new tests today</h2>
+            <h2 class="lead border-left border-danger p-2"> {{number_format($number_of_new_tests)}} new tests today</h2>
 
-            <p class="pl-3"><small><a href="https://covidtracking.com/api/us" target="_blank">source 1</a><a href="https://covidtracking.com/api/us/daily" target="_blank"> | source 2</a></small></p>
+            <p><small><a href="https://covidtracking.com/api/us" target="_blank">source 1</a><a href="https://covidtracking.com/api/us/daily" target="_blank"> | source 2</a></small></p>
 
-            <h2 class="lead border-left border-danger p-2"> {{number_format($total_tests_data_today[0]["totalTestResults"])}} total</h2>
-
-            <p class="pl-3"><small><a href="https://covidtracking.com/api/us" target="_blank">source</a></small></p>
-
+            <h2 class="lead border-left border-danger p-2"> {{number_format($total_tests_data_today[0]["totalTestResults"])}} tests completed</h2>
+            <p><small>since March 4, 2020 | <a href="https://covidtracking.com/api/us" target="_blank">source</a></small></p>
 
         </div>
 
          
-        <div class="col">
+        <div class="col border-left border-primary">
 
                     <h2>State Tests</h2>
                     <form method="POST" action="/store">
