@@ -21,6 +21,8 @@ Route::get('/', 'FeedController@index');
 
 Route::post('/store', 'FeedController@comparePage'); 
 
+Route::post('/previousday', 'FeedController@comparePage'); 
+
 Route::get('/dates', 'FeedController@generateDateSelectBox'); 
 
 Route::get('/compare/{feed}','FeedController@show')->name('compare');

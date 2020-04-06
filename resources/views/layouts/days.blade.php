@@ -77,14 +77,10 @@
 
 
 @include('layouts.table')
-<div class="container">
-  
-  <div class="row">
-    <div class="col">
-       <p class="text-center"><small><a href="https://covidtracking.com/api/states/daily?state={{$feed->state}}&date={{$feed->original_day}}">source data</a></small></p>
-    </div>
-  </div>
-</div>
+
+@include('layouts.prevday')
  
 @endsection
+
+
 

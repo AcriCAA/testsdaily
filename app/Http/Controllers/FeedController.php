@@ -19,9 +19,11 @@ class FeedController extends Controller
 
         $query = 'US'; 
 
-        
 
         $total_tests_data_today = $this->queryApi($query); 
+
+      // verifying API was not down and returned data
+      if(null !== $total_tests_data_today){
 
         $number_of_new_tests = $this->calculateNewTests($total_tests_data_today[0]["totalTestResults"]); 
 
@@ -30,6 +32,11 @@ class FeedController extends Controller
 
         
         return view('testshome', compact('total_tests_data_today', 'number_of_new_tests', 'selects'));
+
+      }
+
+      else 
+        return view('layouts.404custom'); 
 }
 
 
@@ -67,19 +74,19 @@ $feed->query1 = $feed->compileQuery($feed->state_query, $feed->original_day);
 
 $feed->query2 = $feed->compileQuery($feed->state_query, $feed->previous_day); 
 
-    	//run the queries to generate page but json encode them because you are gooing to save them
+//run the queries to generate page data save them
+$feed->page_data_day1 = $this->queryApi($feed->query1);
+$feed->page_data_day2 = $this->queryApi($feed->query2);
 
-// $feed->page_data_day1 = serialize(json_encode($this->queryApi($feed->query1))); 
-// $feed->page_data_day2 = serialize(json_encode($this->queryApi($feed->query2))); 
 
-$feed->page_data_day1 = $this->queryApi($feed->query1); 
-$feed->page_data_day2 = $this->queryApi($feed->query2); 
+// verifying API was not down and returned data
+if(null !== $feed->page_data_day1 && null !== $feed->page_data_day2) {
+ $feed->save();
 
-    	
-
-$feed->save();
-
-return redirect()->route('compare', $feed);
+      return redirect()->route('compare', $feed);
+}
+else 
+  return view('404custom'); 
     	
 }
 
@@ -215,8 +222,7 @@ else
 return $result; 
 
 
-
-
 }
+
 
 }

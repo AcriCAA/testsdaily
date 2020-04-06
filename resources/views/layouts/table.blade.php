@@ -13,49 +13,7 @@
           </tr>
         </thead>
         <tbody>
-    {{-- <tr>
-      
-      <td class="text-right">
-         @if(!empty($feed->page_data_day1["positive"]))
-        {{number_format($feed->page_data_day1["positive"])}}
-       @endif
-      </td>
-
-       <td class="text-center">positive</td>
-
-        <td class="text-left">
-         @if(!empty($feed->page_data_day2["positive"]))
-        {{number_format($feed->page_data_day2["positive"])}}
-       @endif
-      </td>
-
-      
-    </tr> --}}
-
-    {{-- <tr>
-      
-      <td class="text-right">
-
-      @if(!empty($feed->page_data_day1["negative"]))
-      {{number_format($feed->page_data_day1["negative"])}}
-      
-        @endif
-
-      </td>
-
-     <td class="text-center">
-      negative
-    </td>
-
-      <td class="text-left"> 
-
-        @if(!empty($feed->page_data_day2["negative"]))
-      {{number_format($feed->page_data_day2["negative"])}}
-    
-        @endif</td>
-      
-      
-      </tr> --}}
+  
 
 
 
