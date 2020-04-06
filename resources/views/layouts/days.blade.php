@@ -15,7 +15,7 @@
 
 
   @if(!empty(number_format($feed->page_data_day1["totalTestResultsIncrease"])))
-		<h3 class="text-center">Increased Number of Tests from Previous Day</h3>
+		<h3 class="text-center">Tests Today</h3>
 
     <p class="lead text-center">{{number_format($feed->page_data_day1["totalTestResultsIncrease"])}}</p>
 
