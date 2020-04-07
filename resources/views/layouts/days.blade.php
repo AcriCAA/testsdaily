@@ -2,85 +2,86 @@
 
 @section('content')
 
-	
 
-   <div class="card-group">
+
+<div class="card-group">
   <div class="card">
-   
+
     <div class="card-body">
 
       <h2 class="text-center display-4">{{$feed->state}}</h2>
-  <h5 class="text-center">{{$feed->original_day_formatted}}</h5>
-  <p class="text-center"><small >updated as of: {{$feed->page_data_day1["dateChecked"]}}</small></p>
+      <h5 class="text-center">{{$feed->original_day_formatted}}</h5>
+      <p class="text-center"><small >updated as of: {{$feed->page_data_day1["dateChecked"]}}</small></p>
 
 
-  @if(!empty(number_format($feed->page_data_day1["totalTestResultsIncrease"])))
-		<h3 class="text-center">Tests Today</h3>
+      @if(!empty(number_format($feed->page_data_day1["totalTestResultsIncrease"])))
+      <h3 class="text-center">Tests Today</h3>
 
-    <p class="lead text-center">{{number_format($feed->page_data_day1["totalTestResultsIncrease"])}}</p>
+      <p class="lead text-center">{{number_format($feed->page_data_day1["totalTestResultsIncrease"])}}
 
-    {{-- <hr class="my-1"> --}}
+         @if($feed->page_data_day1["totalTestResultsIncrease"] > $feed->page_data_day2["totalTestResultsIncrease"])
+            <i class="fas fa-chevron-circle-up text-success"></i>
+            @elseif($feed->page_data_day1["totalTestResultsIncrease"] < $feed->page_data_day2["totalTestResultsIncrease"])
+            <i class="fas fa-chevron-circle-down text-danger"></i>
+            @endif
 
-    @endif
-</div></div></div>
+      </p>
 
 
-
-      
-
+      @endif
+    </div></div></div>
 
 
     <div class="card-group">
-  <div class="card">
-   
-    <div class="card-body">
+      <div class="card">
+
+        <div class="card-body">
           @if(!empty($feed->page_data_day1["hospitalizedIncrease"]))
-      
-   <h4 class="text-center">hospitalized increase 
-        </h4>                                                    
 
-           <p class="text-center lead">
-        {{number_format($feed->page_data_day1["hospitalizedIncrease"])}}</p>
+          <h4 class="text-center">hospitalized increase 
+          </h4>                                                    
 
+          <p class="text-center lead">
+            {{number_format($feed->page_data_day1["hospitalizedIncrease"])}}
 
+            @if($feed->page_data_day1["hospitalizedIncrease"] > $feed->page_data_day2["hospitalizedIncrease"])
+            <i class="fas fa-chevron-circle-up text-danger"></i>
+            @elseif($feed->page_data_day1["hospitalizedIncrease"] < $feed->page_data_day2["hospitalizedIncrease"])
+            <i class="fas fa-chevron-circle-down text-success"></i>
+            @endif
+          </p>
 
-    @endif
-    
+          @endif
+
+        </div>
+      </div>
+
+      <div class="card">
+
+        <div class="card-body">
+
+         @if(!empty($feed->page_data_day1["deathIncrease"]))
+
+         <h4 class="text-center">death increase</h4>                                                    
+         <p class="text-center lead">
+          {{number_format($feed->page_data_day1["deathIncrease"])}}
+
+          @if($feed->page_data_day1["deathIncrease"] > $feed->page_data_day2["deathIncrease"])
+          <i class="fas fa-chevron-circle-up text-danger"></i>
+          @elseif($feed->page_data_day1["deathIncrease"] < $feed->page_data_day2["deathIncrease"])
+          <i class="fas fa-chevron-circle-down text-success"></i>
+          @endif
+        </p>
+
+        @endif
+
+      </div>
     </div>
   </div>
-  
-  <div class="card">
-   
-    <div class="card-body">
-
-       @if(!empty($feed->page_data_day1["hospitalizedIncrease"]))
-      
-   <h4 class="text-center">death increase 
-        </h4>                                                    
-
-           <p class="text-center lead">
-        {{number_format($feed->page_data_day1["deathIncrease"])}}</p>
 
 
+  @include('layouts.table')
 
-    @endif
-      
-    </div>
-  </div>
-</div>
+  @include('layouts.prevday')
 
-{{--         deathIncrease --}}
-
-        <!-- eg https://covidtracking.com/api/states/daily?state=NY&date=20200316 -->
-    
-
-
-
-@include('layouts.table')
-
-@include('layouts.prevday')
- 
-@endsection
-
-
-
+  @endsection
