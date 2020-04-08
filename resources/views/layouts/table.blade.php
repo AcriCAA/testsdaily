@@ -188,9 +188,9 @@
    {{number_format($feed->page_data_day1["negative"])}}
 
    @if($feed->page_data_day1["negative"] > $feed->page_data_day2["negative"])
-   <i class="fas fa-chevron-circle-up text-danger"></i>
+   <i class="fas fa-chevron-circle-up text-success"></i>
    @elseif($feed->page_data_day1["negative"] < $feed->page_data_day2["negative"])
-   <i class="fas fa-chevron-circle-down text-success"></i>
+   <i class="fas fa-chevron-circle-down text-danger"></i>
    @endif     
 
 
