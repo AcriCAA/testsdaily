@@ -158,8 +158,10 @@ public function generateDateSelectBox(){
    for ($i = 1; $i <= 15;$i++){
 
     $dt = new Carbon($today, 'America/New_York');
-    $previous_day = $dt->subDay($i); 
-    $date_string = strtotime($previous_day); 
+    // $previous_day = $dt->subDay($i); 
+    // $date_string = strtotime($previous_day); 
+
+    $date_string = strtotime($dt);     
 
     $formatted_date_value = date('Ymd', $date_string);
 
