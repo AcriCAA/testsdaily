@@ -54,7 +54,8 @@
                                     min="2020-03-04" max="2200-12-31"   
                                     required /> --}}
 
-                                    <legend>Select comparison</legend>
+                                    <legend>Select comparison*</legend>
+                                     <p><small>*comparisons are currently limited to one days starting prior to today.</small></p>
                                     <fieldset>
                                         <label>Compare 
                                             <select name="datepicker">
