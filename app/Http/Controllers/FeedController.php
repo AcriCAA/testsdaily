@@ -146,22 +146,29 @@ public function generateDateSelectBox(){
 
         // $today = Carbon::today();
 
-   $today = Carbon::now();
+    $today = Carbon::now();
+    
+    $dt = new Carbon($today, 'America/New_York');
 
+    $select_array = [];  
 
-   $dt = new Carbon($today, 'America/New_York');
+    // $date_string = strtotime($dt); 
 
-   $select_array = [];
+    // $formatted_date_value = date('Ymd', $date_string);
+
+    // $date_word = date("F j, Y", $date_string); 
+
+    // $select_array = [$formatted_date_value, $date_word]; 
+
+    // $selects[] = $select_array;           
 
    
 
    for ($i = 1; $i <= 15;$i++){
 
     $dt = new Carbon($today, 'America/New_York');
-    // $previous_day = $dt->subDay($i); 
-    // $date_string = strtotime($previous_day); 
-
-    $date_string = strtotime($dt);     
+    $previous_day = $dt->subDay($i); 
+    $date_string = strtotime($previous_day); 
 
     $formatted_date_value = date('Ymd', $date_string);
 

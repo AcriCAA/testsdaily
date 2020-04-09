@@ -11,7 +11,12 @@
 
       <h2 class="text-center display-4">{{$feed->state}}</h2>
       <h5 class="text-center">{{$feed->original_day_formatted}}</h5>
-      <p class="text-center"><small >updated as of: {{$feed->page_data_day1["dateChecked"]}}</small></p>
+      <p class="text-center"><small >updated as of: 
+      @if(!empty($feed->page_data_day1["dateChecked"]))
+        {{$feed->page_data_day1["dateChecked"]}}
+      @endif
+
+      </small></p>
 
 
       @if(!empty(number_format($feed->page_data_day1["totalTestResultsIncrease"])))
