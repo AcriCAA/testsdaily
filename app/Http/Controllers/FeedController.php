@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use GuzzleHttp\Client;
 
+use Goutte\Client as GoutteClient;
+
 
 use App\Feed; 
 use Carbon\Carbon; 
@@ -13,6 +15,35 @@ use Carbon\Carbon;
 class FeedController extends Controller
 {
     //
+
+    public function scrapData(){
+
+//       $crawler->filter('h2 > a')->each(function ($node) {
+//     print $node->text()."\n";
+// });
+
+        $client = new GoutteClient();
+        $crawler = $client->request('GET', 'https://www.symfony.com/blog/');
+        $filtered = $crawler->filter('h2 > a'); 
+
+        // dd($filtered); 
+
+        //  foreach($filtered->nodes as $node){
+
+        //   echo '<pre>';
+        //   var_dump($node->text()); 
+        //   echo '</pre>';
+        // }
+
+        $node_text = [];
+
+        $node_text[] = $crawler->filter('h2 > a')->each(function ($node) {
+          return $node->text(); 
+        });
+
+        dd($node_text); 
+
+    }
 
     public function index()
     {
