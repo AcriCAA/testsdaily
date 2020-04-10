@@ -23,9 +23,11 @@ class FeedController extends Controller
 // });
 
         $client = new GoutteClient();
-        $crawler = $client->request('GET', 'https://www.symfony.com/blog/');
-        $filtered = $crawler->filter('h2 > a'); 
+        // $crawler = $client->request('GET', 'https://www.symfony.com/blog/');
 
+        $crawler = $client->request('GET', 'https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx');
+        // $filtered = $crawler->filter('h2 > a'); 
+$filtered = $crawler->filterXPath('//*[@id="ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField"]/div/div/table/tbody/tr[52]/td[1]')->text(); 
         // dd($filtered); 
 
         //  foreach($filtered->nodes as $node){
@@ -35,13 +37,13 @@ class FeedController extends Controller
         //   echo '</pre>';
         // }
 
-        $node_text = [];
+        // $node_text = [];
 
-        $node_text[] = $crawler->filter('h2 > a')->each(function ($node) {
-          return $node->text(); 
-        });
+        // $node_text[] = $crawler->filter('h2 > a')->each(function ($node) {
+        //   return $node->text(); 
+        // });
 
-        dd($node_text); 
+dd($filtered); 
 
     }
 
