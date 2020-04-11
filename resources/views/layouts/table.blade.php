@@ -119,12 +119,12 @@
 
     <td class="text-right">
 
-      @if(!empty($feed->page_data_day1["hospitalized"]))
-      {{number_format($feed->page_data_day1["hospitalized"])}}
+      @if(!empty($feed->page_data_day1["hospitalizedCurrently"]))
+      {{number_format($feed->page_data_day1["hospitalizedCurrently"])}}
 
-      @if($feed->page_data_day1["hospitalized"] > $feed->page_data_day2["hospitalized"])
+      @if($feed->page_data_day1["hospitalized"] > $feed->page_data_day1["hospitalizedCurrently"])
       <i class="fas fa-chevron-circle-up text-danger"></i>
-      @elseif($feed->page_data_day1["hospitalized"] < $feed->page_data_day2["hospitalized"])
+      @elseif($feed->page_data_day1["hospitalized"] < $feed->page_data_day1["hospitalizedCurrently"])
       <i class="fas fa-chevron-circle-down text-success"></i>
       @endif
 
@@ -137,9 +137,14 @@
     </td>
 
     <td class="text-left">
+ @if(!empty($feed->page_data_day2["hospitalizedCurrently"]))
+      {{number_format($feed->page_data_day2["hospitalizedCurrently"])}}
 
-      @if(!empty($feed->page_data_day2["hospitalized"]))
-      {{number_format($feed->page_data_day2["hospitalized"])}}
+      @if($feed->page_data_day1["hospitalized"] > $feed->page_data_day2["hospitalizedCurrently"])
+      <i class="fas fa-chevron-circle-up text-danger"></i>
+      @elseif($feed->page_data_day1["hospitalized"] < $feed->page_data_day2["hospitalizedCurrently"])
+      <i class="fas fa-chevron-circle-down text-success"></i>
+      @endif
 
       @endif
 

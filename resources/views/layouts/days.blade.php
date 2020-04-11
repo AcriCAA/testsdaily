@@ -56,7 +56,20 @@
             @endif
           </p>
 
+          @else
+
+                    <h4 class="text-center">hospitalized increase 
+          </h4>   
+          <p class="text-center">--</p>
+
           @endif
+
+       
+
+          
+
+
+
 
         </div>
       </div>
