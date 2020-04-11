@@ -34,7 +34,21 @@ class FeedController extends Controller
 
 // dd($filtered); 
 
-	return view('layouts.phl',compact('filtered')); 
+	return view('layouts.city',compact('filtered')); 
+
+    }
+
+
+    public function nycScrapeData(){
+
+
+    	
+
+	return redirect('https://www1.nyc.gov/site/doh/covid/covid-19-data.page'); 
+
+
+
+
 
     }
 

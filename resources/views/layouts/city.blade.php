@@ -7,7 +7,7 @@
 <div class="container">
   <div class="row mt-3">
     <div class="col border">
-      <h2 class="text-center p-3">Philly Quick View</h2>
+      <h2 class="text-center p-3">City Quick View</h2>
 
 
       <table class="table table-striped">
