@@ -42,9 +42,34 @@ class FeedController extends Controller
     public function nycScrapeData(){
 
 
-    	
 
-	return redirect('https://www1.nyc.gov/site/doh/covid/covid-19-data.page'); 
+   	 $client = new GoutteClient();
+        // $crawler = $client->request('GET', 'https://www.symfony.com/blog/');
+
+        $crawler = $client->request('GET', 'https://github.com/nychealth/coronavirus-data/blob/master/summary.csv');
+        
+        //filter the data using the current table row id
+		// $filtered = $crawler->filterXPath('/html/body/div[4]/div/main/div[2]/div/div[3]/div[2]/div[2]/table')->children()->each(function ($node) {
+  //         return $node->text(); 
+  //       });
+
+
+        $filtered = $crawler->filter('body > div.application-main > div > main > div.container-lg.clearfix.new-discussion-timeline.p-responsive > div > div.Box.mt-3.position-relative > div.Box-body.p-0.blob-wrapper.data.type-csv > div.markdown-body > table'); 
+
+
+        // body > div.application-main > div > main > div.container-lg.clearfix.new-discussion-timeline.p-responsive > div > div.Box.mt-3.position-relative > div.Box-body.p-0.blob-wrapper.data.type-csv > div.markdown-body > table
+
+
+    // /html/body/div[4]/div/main/div[2]/div/div[3]/div[2]/div[2]/table
+
+	// return redirect('https://www1.nyc.gov/site/doh/covid/covid-19-data.page'); 
+
+
+      dd($filtered); 
+
+//         foreach ($crawler as $domElement) {
+//     var_dump($domElement->nodeName);
+// }
 
 
 
