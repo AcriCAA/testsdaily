@@ -54,7 +54,7 @@ class FeedController extends Controller
   //       });
 
 
-        $filtered = $crawler->filter('body > div.application-main > div > main > div.container-lg.clearfix.new-discussion-timeline.p-responsive > div > div.Box.mt-3.position-relative > div.Box-body.p-0.blob-wrapper.data.type-csv > div.markdown-body > table'); 
+        $filtered = $crawler->filter('body > div.application-main > div > main > div.container-lg.clearfix.new-discussion-timeline.p-responsive > div > div.Box.mt-3.position-relative > div.Box-body.p-0.blob-wrapper.data.type-csv > div.markdown-body > table')->html(); 
 
 
         // body > div.application-main > div > main > div.container-lg.clearfix.new-discussion-timeline.p-responsive > div > div.Box.mt-3.position-relative > div.Box-body.p-0.blob-wrapper.data.type-csv > div.markdown-body > table
@@ -65,7 +65,7 @@ class FeedController extends Controller
 	// return redirect('https://www1.nyc.gov/site/doh/covid/covid-19-data.page'); 
 
 
-      dd($filtered); 
+      echo $filtered; 
 
 //         foreach ($crawler as $domElement) {
 //     var_dump($domElement->nodeName);
