@@ -53,9 +53,35 @@ class FeedController extends Controller
   //         return $node->text(); 
   //       });
 
+        $all = [];
 
-        $filtered = $crawler->filter('body > div.application-main > div > main > div.container-lg.clearfix.new-discussion-timeline.p-responsive > div > div.Box.mt-3.position-relative > div.Box-body.p-0.blob-wrapper.data.type-csv > div.markdown-body > table')->children();
+        $cases = $crawler->filter('body > div.application-main > div > main > div.container-lg.clearfix.new-discussion-timeline.p-responsive > div > div.Box.mt-3.position-relative > div.Box-body.p-0.blob-wrapper.data.type-csv > div.markdown-body > table > thead')->children()->each(function ($node) {
+          return $node->text(); 
+        });
 
+
+
+         $deaths = $crawler->filter('#LC3')->children()->each(function ($node) {
+          return $node->text(); 
+        });
+
+         $timestamp = $crawler->filter('#LC4')->children()->each(function ($node) {
+          return $node->text(); 
+        });
+
+
+
+
+         $all[] = $cases; 
+
+         $all[] = $deaths; 
+
+         $all[] = $timestamp; 
+
+
+
+
+// /html/body/div[4]/div/main/div[2]/div/div[3]/div[2]/div[2]/table/thead
         // body > div.application-main > div > main > div.container-lg.clearfix.new-discussion-timeline.p-responsive > div > div.Box.mt-3.position-relative > div.Box-body.p-0.blob-wrapper.data.type-csv > div.markdown-body > table
 
 
@@ -67,7 +93,7 @@ class FeedController extends Controller
       // echo $filtered; 
       // echo '</pre>'; 
 
-        dd($filtered); 
+        dd($all); 
 //         foreach ($crawler as $domElement) {
 //     var_dump($domElement->nodeName);
 // }
