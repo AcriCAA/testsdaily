@@ -8,12 +8,16 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-use Goutte\Client as GoutteClient;
+use App\Http\Controllers\PhillyController as PHL; 
+
 
 class ProcessPhillyCases implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    public $tries = 1; 
+
+    protected $phl; 
     /**
      * Create a new job instance.
      *
@@ -22,6 +26,7 @@ class ProcessPhillyCases implements ShouldQueue
     public function __construct()
     {
         //
+                $this->phl = new PHL(); 
     }
 
     /**
@@ -32,5 +37,9 @@ class ProcessPhillyCases implements ShouldQueue
     public function handle()
     {
         //
+         $this->phl::getPHLCases(); 
+
+        \Log::info('ran job successfully');
+
     }
 }

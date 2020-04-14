@@ -16,6 +16,8 @@ class CreatePhilliesTable extends Migration
         Schema::create('phillies', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+             $table->string('cases'); 
+            $table->string('deaths'); 
         });
     }
 
