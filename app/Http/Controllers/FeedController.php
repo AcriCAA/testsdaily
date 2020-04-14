@@ -34,7 +34,7 @@ class FeedController extends Controller
 
 // dd($filtered); 
 
-	return view('layouts.city',compact('filtered')); 
+	return view('layouts.phl',compact('filtered')); 
 
     }
 
@@ -55,10 +55,9 @@ class FeedController extends Controller
 
         $all = [];
 
-        $cases = $crawler->filter('body > div.application-main > div > main > div.container-lg.clearfix.new-discussion-timeline.p-responsive > div > div.Box.mt-3.position-relative > div.Box-body.p-0.blob-wrapper.data.type-csv > div.markdown-body > table > thead')->children()->each(function ($node) {
+        $cases = $crawler->filter('#LC1')->children()->each(function ($node) {
           return $node->text(); 
         });
-
 
 
          $deaths = $crawler->filter('#LC3')->children()->each(function ($node) {
@@ -79,24 +78,7 @@ class FeedController extends Controller
          $all[] = $timestamp; 
 
 
-
-
-// /html/body/div[4]/div/main/div[2]/div/div[3]/div[2]/div[2]/table/thead
-        // body > div.application-main > div > main > div.container-lg.clearfix.new-discussion-timeline.p-responsive > div > div.Box.mt-3.position-relative > div.Box-body.p-0.blob-wrapper.data.type-csv > div.markdown-body > table
-
-
-    // /html/body/div[4]/div/main/div[2]/div/div[3]/div[2]/div[2]/table
-
-	// return redirect('https://www1.nyc.gov/site/doh/covid/covid-19-data.page'); 
-
-      //  echo '<pre>'; 
-      // echo $filtered; 
-      // echo '</pre>'; 
-
-        dd($all); 
-//         foreach ($crawler as $domElement) {
-//     var_dump($domElement->nodeName);
-// }
+        return view('layouts.nyc', compact('all')); 
 
 
 

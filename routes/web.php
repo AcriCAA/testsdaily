@@ -27,6 +27,6 @@ Route::get('/dates', 'FeedController@generateDateSelectBox');
 
 Route::get('/compare/{feed}','FeedController@show')->name('compare');
 
-Route::get('/phl', 'FeedController@phillyScrapeData'); 
+Route::get('/phlquick', 'FeedController@phillyScrapeData'); 
 
-Route::get('/nyc', 'FeedController@nycScrapeData'); 
+Route::get('/nycquick', 'FeedController@nycScrapeData'); 
