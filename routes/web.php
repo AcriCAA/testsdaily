@@ -30,3 +30,9 @@ Route::get('/compare/{feed}','FeedController@show')->name('compare');
 Route::get('/phlquick', 'FeedController@phillyScrapeData'); 
 
 Route::get('/nycquick', 'FeedController@nycScrapeData'); 
+
+
+Route::get('/phl', 'FeedController@showPhilly'); 
+
+Route::get('/nyc', 'FeedController@showNYC'); 
+

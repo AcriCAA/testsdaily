@@ -10,29 +10,53 @@ use Goutte\Client as GoutteClient;
 
 
 use App\Feed; 
+
+use App\Philly as Philly; 
+use App\NewYork as NewYork;
+
 use Carbon\Carbon; 
 
 class FeedController extends Controller
 {
     //
 
+    public function showPhilly(){
+
+
+      $collection = Philly::all()->sortByDesc("created_at");;
+
+      $city = "Philadelphia"; 
+
+      $source = "https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx"; 
+
+      return view('layouts.cities', compact('source','city','collection')); 
+
+    }
+
+
+    public function showNYC(){
+
+
+      $collection = NewYork::all()->sortByDesc("created_at");
+      $city = "New York"; 
+      $source = "https://github.com/nychealth/coronavirus-data/blob/master/summary.csv"; 
+      return view('layouts.cities', compact('source','city','collection'));
+      
+    }
+
     public function phillyScrapeData(){
 
-//       $crawler->filter('h2 > a')->each(function ($node) {
-//     print $node->text()."\n";
-// });
 
         $client = new GoutteClient();
-        // $crawler = $client->request('GET', 'https://www.symfony.com/blog/');
+        
 
         $crawler = $client->request('GET', 'https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx');
         
-        //filter the data using the current table row id
+        
 		$filtered = $crawler->filterXPath('//*[@id="ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField"]/div/div/table/tbody/tr[52]')->children()->each(function ($node) {
           return $node->text(); 
         });
 
-// dd($filtered); 
 
 	return view('layouts.phl',compact('filtered')); 
 
@@ -43,15 +67,11 @@ class FeedController extends Controller
 
 
 
-   	 $client = new GoutteClient();
-        // $crawler = $client->request('GET', 'https://www.symfony.com/blog/');
+     	 $client = new GoutteClient();
 
         $crawler = $client->request('GET', 'https://github.com/nychealth/coronavirus-data/blob/master/summary.csv');
         
-        //filter the data using the current table row id
-		// $filtered = $crawler->filterXPath('/html/body/div[4]/div/main/div[2]/div/div[3]/div[2]/div[2]/table')->children()->each(function ($node) {
-  //         return $node->text(); 
-  //       });
+      
 
         $all = [];
 
@@ -69,8 +89,6 @@ class FeedController extends Controller
         });
 
 
-
-
          $all[] = $cases; 
 
          $all[] = $deaths; 
@@ -79,9 +97,6 @@ class FeedController extends Controller
 
 
         return view('layouts.nyc', compact('all')); 
-
-
-
 
 
     }

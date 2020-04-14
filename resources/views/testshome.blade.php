@@ -31,7 +31,7 @@
         </div>
 
          
-        <div class="col border-left border-primary">
+        <div class="col border-left border-right border-primary">
 
                     <h2>State Tests</h2>
                     <form method="POST" action="/store">
@@ -135,14 +135,26 @@
                                   </form>
 
                               </div>
+
                           </div> <!-- close row -->
 
 
+            
+                <div class="col border-left border-primary">
+                    <h2>Selected city data</h2>
+                    <p><small>*data scraped from city data sources</small></p>
+                    <p><a href="/phl">Phildelphia</a></p>
+                    <p><a href="/nyc">New York City</a></p>
+                </div>
+            
             <div class="row mt-3">
                     <div class="col">
                      <p>*This site would not be possible without the data collected by the <a href="https://covidtracking.com" target="_blank">Covid Tracking project</a>. Data from the site is gathered using their <a href="https://covidtracking.com/api" target="_blank">API</a>.</p>
                  </div>
              </div>
+
+             <div class="row mt-3">
+            </div>
 
 </div>
 
