@@ -28,8 +28,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->job(new ProcessNYCCases)->daily(); 
-        $schedule->job(new ProcessPhillyCases)->daily(); 
+        $schedule->job(new ProcessNYCCases)->dailyAt('18:00'); 
+        $schedule->job(new ProcessPhillyCases)->dailyAt('18:00'); 
     }
 
     /**
