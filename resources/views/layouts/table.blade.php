@@ -142,15 +142,8 @@
     </td>
 
     <td class="text-left">
- @if(!empty($feed->page_data_day2["hospitalizedCurrently"]))
-      {{number_format($feed->page_data_day2["hospitalizedCurrently"])}}
-
-      @if($feed->page_data_day1["hospitalized"] > $feed->page_data_day2["hospitalizedCurrently"])
-      <i class="fas fa-chevron-circle-up text-danger"></i>
-      @elseif($feed->page_data_day1["hospitalized"] < $feed->page_data_day2["hospitalizedCurrently"])
-      <i class="fas fa-chevron-circle-down text-success"></i>
-      @endif
-
+      @if(!empty($feed->page_data_day2["hospitalizedCurrently"]))
+        {{number_format($feed->page_data_day2["hospitalizedCurrently"])}}
       @endif
 
     </td>
@@ -178,7 +171,7 @@
    </td>
 
    <td class="text-center">
-    cumulative positives since testing began
+    cumulative <strong>positives</strong> since testing began
   </td>
 
   <td class="text-left">
@@ -211,7 +204,7 @@
  </td>
 
  <td class="text-center">
-  cumulative negatives since testing began
+  cumulative <strong>negatives</strong> since testing began
 </td>
 
 <td class="text-left">
@@ -244,7 +237,7 @@
  </td>
 
  <td class="text-center">
-  cumulative deaths since testing began
+  cumulative <strong>deaths</strong> since testing began
 </td>
 
 <td class="text-left">
@@ -271,7 +264,7 @@
  </td>
 
  <td class="text-center">
-  cumulative tests completed since testing began
+  cumulative <strong>tests completed</strong> since testing began
 </td>
 
 <td class="text-left">
