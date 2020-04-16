@@ -6,6 +6,7 @@
 
       <table class="table table-striped">
         <thead class="thead-dark">
+          <!-- new row -->
           <tr>
             <th scope="col"class="text-right">{{$feed->original_day_formatted}}</th>
             <th scope="col" class="text-center"></th>
@@ -14,6 +15,7 @@
         </thead>
         <tbody>
 
+          <!-- new row -->
           <tr>
 
             <td class="text-right">
@@ -49,6 +51,7 @@
 
        </tr>
 
+       <!-- new row -->
        <tr>
 
         <td class="text-right">
@@ -84,6 +87,7 @@
 
      </tr>
 
+     <!-- new row -->
      <tr>
 
       <td class="text-right">
@@ -115,6 +119,7 @@
   </tr>
 
 
+  <!-- new row -->
   <tr>
 
     <td class="text-right">
@@ -154,6 +159,7 @@
 
   </tr>
 
+  <!-- new row -->
   <tr>
 
     <td class="text-right">
@@ -186,6 +192,7 @@
 </tr>
 
 
+<!-- new row -->
 <tr>
 
   <td class="text-right">
@@ -208,8 +215,41 @@
 </td>
 
 <td class="text-left">
- @if(!empty($feed->page_data_day2["positive"]))
- {{number_format($feed->page_data_day2["positive"])}}
+ @if(!empty($feed->page_data_day2["negative"]))
+ {{number_format($feed->page_data_day2["negative"])}}
+
+ @endif
+
+</td>
+
+</tr>
+
+
+<!-- new row -->
+<tr>
+
+  <td class="text-right">
+   @if(!empty($feed->page_data_day1["death"]))
+   {{number_format($feed->page_data_day1["death"])}}
+
+   @if($feed->page_data_day1["death"] > $feed->page_data_day2["death"])
+   <i class="fas fa-chevron-circle-up text-danger"></i>
+   @elseif($feed->page_data_day1["death"] < $feed->page_data_day2["death"])
+   <i class="fas fa-chevron-circle-down text-success"></i>
+   @endif     
+
+
+   @endif
+
+ </td>
+
+ <td class="text-center">
+  cumulative deaths since testing began
+</td>
+
+<td class="text-left">
+ @if(!empty($feed->page_data_day2["death"]))
+ {{number_format($feed->page_data_day2["death"])}}
 
  @endif
 
