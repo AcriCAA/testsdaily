@@ -27,14 +27,14 @@
           <tr>
 
            <td>
-            {{$data->date}}
-          </td>            
-          <td>
-            @if(!empty($data->cases))
-            {{number_format($data->cases)}}
+            @if(!empty($data->date))
+            {{number_format($data->date)}}
             @else 
               {{number_format($data->created_at)}}
             @endif
+          </td>            
+          <td>
+            {{number_format($data->cases)}}
           </td>
           <td>
             {{number_format($data->deaths)}}
