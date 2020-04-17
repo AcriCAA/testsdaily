@@ -23,7 +23,7 @@ class FeedController extends Controller
     public function showPhilly(){
 
 
-      $collection = Philly::all()->sortByDesc("created_at");;
+      $collection = Philly::all()->sortByDesc("created_at");
 
       $city = "Philadelphia"; 
 
