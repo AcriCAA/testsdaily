@@ -39,6 +39,8 @@ class NewYorkController extends Controller
 
          $nyc->deaths = $death_array[2]; 
 
+         $nyc->date = $nyc->setDate(); 
+
          $nyc->save(); 
 
     }

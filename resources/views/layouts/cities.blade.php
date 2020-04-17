@@ -15,7 +15,7 @@
       <table class="table table-striped">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" >Date</th>
+            <th scope="col" >Date/Time Checked</th>
             <th scope="col">Cases</th>
             <th scope="col">Deaths</th>
             
@@ -27,7 +27,7 @@
           <tr>
 
            <td>
-            {{$data->created_at}}
+            {{$data->date}}
           </td>            
           <td>
             {{number_format($data->cases)}}

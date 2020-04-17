@@ -32,6 +32,8 @@ class PhillyController extends Controller
        $phl->cases = $filtered[1]; 
        $phl->deaths = $filtered[2]; 
 
+       $phl->date = $phl->setDate(); 
+
        $phl->save(); 
 
 

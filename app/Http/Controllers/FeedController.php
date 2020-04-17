@@ -24,6 +24,8 @@ class FeedController extends Controller
 
 
       $collection = Philly::all()->sortByDesc("created_at");
+      
+      // $date = Carbon::createFromFormat('Y-m-d H:i:s', '2015-10-23 17:64:00', 'Europe/Amsterdam');
 
       $city = "Philadelphia"; 
 
