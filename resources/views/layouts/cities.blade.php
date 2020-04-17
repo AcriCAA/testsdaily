@@ -30,7 +30,7 @@
             @if(!empty($data->date))
               {{$data->date}}
             @else 
-              {{number_format($data->created_at)}}
+              {{$data->created_at}}
             @endif
           </td>            
           <td>
