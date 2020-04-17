@@ -30,7 +30,11 @@
             {{$data->date}}
           </td>            
           <td>
+            @if(!empty($data->cases))
             {{number_format($data->cases)}}
+            @else 
+              {{number_format($data->created_at)}}
+            @endif
           </td>
           <td>
             {{number_format($data->deaths)}}
