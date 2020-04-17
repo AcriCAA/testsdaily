@@ -28,7 +28,7 @@
 
            <td>
             @if(!empty($data->date))
-            {{number_format($data->date)}}
+              {{$data->date}}
             @else 
               {{number_format($data->created_at)}}
             @endif
