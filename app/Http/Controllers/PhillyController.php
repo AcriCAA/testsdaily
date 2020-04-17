@@ -27,10 +27,20 @@ class PhillyController extends Controller
         });
 
 
+    dd($filtered);
+
+
        $phl = new Philly(); 
 
+
+       //this is positives
        $phl->cases = $filtered[1]; 
-       $phl->deaths = $filtered[2]; 
+
+       //this is negatives; 
+       // $filtered[2]; 
+
+       //this is deaths
+       $phl->deaths = $filtered[3]; 
 
        $phl->date = $phl->setDate(); 
 
