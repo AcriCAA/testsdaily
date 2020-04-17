@@ -26,12 +26,7 @@ class PhillyController extends Controller
           return $node->text(); 
         });
 
-
-    dd($filtered);
-
-
        $phl = new Philly(); 
-
 
        //this is positives
        $phl->cases = $filtered[1]; 
