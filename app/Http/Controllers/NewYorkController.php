@@ -22,8 +22,6 @@ class NewYorkController extends Controller
   //         return $node->text(); 
   //       });
 
-        $all = [];
-
         $case_array = $crawler->filter('#LC1')->children()->each(function ($node) {
           return $node->text(); 
         });

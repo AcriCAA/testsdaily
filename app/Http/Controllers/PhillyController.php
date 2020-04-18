@@ -32,7 +32,7 @@ class PhillyController extends Controller
        $phl->cases = $filtered[1]; 
 
        //this is negatives; 
-       // $filtered[2]; 
+       $phl->negatives = $filtered[2]; 
 
        //this is deaths
        $phl->deaths = $filtered[3]; 

@@ -40,7 +40,7 @@ class FeedController extends Controller
 
 
       $collection = NewYork::all()->sortByDesc("created_at");
-      $city = "New York"; 
+      $city = "New York City"; 
       $source = "https://github.com/nychealth/coronavirus-data/blob/master/summary.csv"; 
       return view('layouts.cities', compact('source','city','collection'));
       
@@ -81,11 +81,16 @@ class FeedController extends Controller
           return $node->text(); 
         });
 
+         $hospitalized = $crawler->filter('#LC2')->children()->each(function ($node) {
+          return $node->text(); 
+        });
+
 
          $deaths = $crawler->filter('#LC3')->children()->each(function ($node) {
           return $node->text(); 
         });
 
+        // this is now probable cases, needs to be updated later. 
          $timestamp = $crawler->filter('#LC4')->children()->each(function ($node) {
           return $node->text(); 
         });
@@ -95,7 +100,11 @@ class FeedController extends Controller
 
          $all[] = $deaths; 
 
+         $all[] = $hospitalized;
+
          $all[] = $timestamp; 
+
+         // dd($all);
 
 
         return view('layouts.nyc', compact('all')); 

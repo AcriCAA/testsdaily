@@ -7,14 +7,15 @@
 <div class="container">
   <div class="row mt-3">
     <div class="col border">
-      <h2 class="text-center p-3">City Quick View</h2>
+      <h2 class="text-center p-3">PHL Now</h2>
 
 
       <table class="table table-striped">
         <thead class="thead-dark">
           <tr>
             <th scope="col" >City</th>
-            <th scope="col">Cases</th>
+            <th scope="col">Positive Cases</th>
+            <th scope="col">Negative Cases</th>
             <th scope="col">Deaths</th>
             
           </tr>
@@ -30,25 +31,33 @@
            <td>
             {{$filtered[1]}}
           </td>
-            <td>
+          <td>
             {{$filtered[2]}}
+          </td>
+            <td>
+            {{$filtered[3]}}
           </td>
 
          
 
        </tr>
 
-       <tr>
+ <!--       <tr>
         <td><a href="https://www.phila.gov/programs/coronavirus-disease-2019-covid-19/testing-and-data/" target="_blank">more data from phila.gov</a></td>
         <td></td>
         <td></td>
-      </tr>
+      </tr> -->
 
       
 
 
 </tbody>
 </table>
+
+
+                    <p class="text-center">
+                      <a href="/phl" class="btn btn-primary btn-block">Check Previous  Days</a>
+                  </p>
 
 </div>
 </div>

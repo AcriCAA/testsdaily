@@ -16,8 +16,9 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col" >Date/Time Checked</th>
-            <th scope="col">Cases</th>
-            <th scope="col">Deaths</th>
+            <th scope="col">Positive Cases</th>
+            @if($city=="Philadelphia")<th scope="col">Negative Cases</th>@endif
+            <th scope="col">Deaths</th> 
             
           </tr>
         </thead>
@@ -36,6 +37,8 @@
           <td>
             {{number_format($data->cases)}}
           </td>
+
+          @if($city=="Philadelphia")<td>{{$data->negatives}}</td>@endif
           <td>
             {{number_format($data->deaths)}}
           </td>   
