@@ -62,7 +62,7 @@
 
     <h3 class="mt-3">More Data</h3>
     
-    @if($city == "New York")
+    @if($city == "New York City")
       <p>More information available <a href="https://www1.nyc.gov/site/doh/covid/covid-19-data.page" target="_blank">here on NYC.gov</a></p>
     @elseif($city == "Philadelphia")
 
