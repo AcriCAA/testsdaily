@@ -58,9 +58,9 @@
         </p>
 <div class="row">
         
-              <p class="px-3">Tests Daily was created by the team at <a href="https://agstrategic.design">AG Strategic Design</a> .</p>
+              <p class="px-3">Tests Daily was created by the team at <a href="https://agstrategic.design" style="color: black;">AG Strategic Design</a> .</p>
 
-              <p class="px-3">This site would not be possible without the data collected by the <a href="https://covidtracking.com" target="_blank">Covid Tracking project</a>. Data from the site is gathered using their <a href="https://covidtracking.com/api" target="_blank">API</a>.</p>
+              
 </div>
 <div class="row mt-3 p-3">
     
