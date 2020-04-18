@@ -141,8 +141,8 @@
 
             
                 <div class="col border-left border-primary">
-                    <h2>Selected city data</h2>
-                    <p><small>*data scraped from city data sources</small></p>
+                    <h2>City data</h2>
+                    <p><small>*data scraped from select city data sources</small></p>
                     <h3>Philadelphia</h3>
                     <p><a href="/phlquick">now</a> | <a href="/phl">daily (previous days)</a></p>
                     <h3>New York City</h3>
