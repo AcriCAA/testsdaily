@@ -59,7 +59,6 @@ class FeedController extends Controller
           return $node->text(); 
         });
 
-
 	return view('layouts.phl',compact('filtered')); 
 
     }
@@ -96,20 +95,11 @@ class FeedController extends Controller
         });
 
          // the label for each column gets put in the first position
-         if($cases[1])
-         $all[] = ['cases' => str_replace(':', '', $cases[2])]; // Replaces all colons with nothing.
- 
-
-         $all[] = $deaths; 
-
-         $all[] = $hospitalized;
-
-         $all[] = $probable; 
-
-         dd($all);
-
-
-        return view('layouts.nyc', compact('all')); 
+         // if($cases[1])
+         // $all[] = ['cases' => str_replace(':', '', $cases[2])]; // Replaces all colons with nothing.
+        
+  
+        return view('layouts.nyc', compact('cases', 'hospitalized', 'deaths','probable')); 
 
 
     }

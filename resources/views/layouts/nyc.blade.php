@@ -15,8 +15,12 @@
           <tr>
             
             <!-- <th scope="col" >Date</th> -->
-            <th scope="col">{{$all[0][1]}}</th>
+            <th scope="col">Cases</th>
+            <th scope="col">Hospitalized</th>
             <th scope="col">Deaths</th>
+            
+            <th scope="col">Probable Cases</th>
+
             
             
           </tr>
@@ -24,19 +28,30 @@
         <tbody>
 
           <tr>
-         <!--     <td>
-            {{$all[2][2]}}
-          </td> -->
+    
+          {{-- since the api has been changing the source data table a lot these if statements verifying the label scraped from source table matched my table header --}}
+         <td>
+          @if(strcasecmp(preg_replace("#[[:punct:]]#", "",$cases[1]),'cases') == 0)
+            {{number_format($cases[2])}}
+            @endif
+          </td>
+           
            <td>
-            {{number_format($all[0][2])}}
+            @if(strcasecmp(preg_replace("#[[:punct:]]#", "",$hospitalized[1]),'hospitalized') == 0)
+            {{number_format($hospitalized[2])}}
+            @endif
+          </td>
+          <td>
+            @if(strcasecmp(preg_replace("#[[:punct:]]#", "",$deaths[1]),'confirmed') == 0)
+            {{number_format($deaths[2])}}
+            @endif
           </td>            
 
            <td>
-            {{number_format($all[1][2])}}
-          </td>
-           
-
-         
+            @if(strcasecmp(preg_replace("#[[:punct:]]#", "",$probable[1]),'probable') == 0)
+            {{number_format($probable[2])}}
+            @endif
+          </td>         
 
        </tr>
 
