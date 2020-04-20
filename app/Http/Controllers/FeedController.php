@@ -91,20 +91,22 @@ class FeedController extends Controller
         });
 
         // this is now probable cases, needs to be updated later. 
-         $timestamp = $crawler->filter('#LC4')->children()->each(function ($node) {
+         $probable = $crawler->filter('#LC4')->children()->each(function ($node) {
           return $node->text(); 
         });
 
-
-         $all[] = $cases; 
+         // the label for each column gets put in the first position
+         if($cases[1])
+         $all[] = ['cases' => str_replace(':', '', $cases[2])]; // Replaces all colons with nothing.
+ 
 
          $all[] = $deaths; 
 
          $all[] = $hospitalized;
 
-         $all[] = $timestamp; 
+         $all[] = $probable; 
 
-         // dd($all);
+         dd($all);
 
 
         return view('layouts.nyc', compact('all')); 
