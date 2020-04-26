@@ -5,7 +5,7 @@
 
 
     <div class="jumbotron">
-      <h1 class="display-4">United States COVID Tests</h1>
+      <h1 class="display-4">United States COVID-19 Tests</h1>
 
 
       <hr class="my-4">
