@@ -29,7 +29,7 @@
           </td>            
 
            <td>
-            {{$filtered[1]}}
+            {{number_format($filtered[1])}}
           </td>
           <td>
             {{$filtered[2]}}
