@@ -60,7 +60,7 @@ class Feed extends Model
 
     		//day and state comes from form submission
 		
-		return $query = "states/".$state."/"; 
+		return $query = "states/".$state; 
 		
 		
 
@@ -68,7 +68,9 @@ class Feed extends Model
 
 	public function compileQuery($statequery, $day){
 
-		return $query = $statequery.'/'.$day.'.json';
+	return $query = $statequery.'/'.$day.'.json';		
+
+		// return $query = $statequery.'/'.$day.'.json';
 
 	}
 
