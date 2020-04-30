@@ -37,7 +37,7 @@
 
    <div class="row">
     <div class="col">
-       <p class="text-center"><small><a href="https://covidtracking.com/api/states/daily?state={{$feed->state}}&date={{$feed->original_day}}">source data</a></small></p>
+       <p class="text-center"><small><a href="https://covidtracking.com/api/v1/states/{{$feed->state}}/{{$feed->original_day}}">source data</a></small></p>
     </div>
   </div>
 

@@ -176,7 +176,7 @@ if(null !== $feed->page_data_day1 && null !== $feed->page_data_day2) {
       return redirect()->route('compare', $feed);
 }
 else 
-  return view('404custom'); 
+  return view('layouts.404custom'); 
     	
 }
 
@@ -288,12 +288,12 @@ public function queryAPI($query){
   if($query == 'US'){
       
 
-      $curlstring.= 'us'; 
+      $curlstring.= 'us/current.json'; 
 
   }
 
   elseif ($query == 'USDAILY') {
-    $curlstring.= 'us/daily'; 
+    $curlstring.= 'us/daily.json'; 
 }
 
 else{
