@@ -19,11 +19,20 @@
         <div class="col border-right border-primary">
 
             <h2>U.S. Tests Today</h2>
-            <p class=""><small >{{$total_tests_data_today[0]["lastModified"]}}</small></p>
+          <p class=""><small >{{$total_tests_data_today[0]["lastModified"]}}</small></p>
+
+          @if($number_of_new_tests == 0)
+            <h2 class="lead border-left border-danger p-2">test numbers not yet updated for today</h2>
+
+            <p><small>data is usually updated all the data each day between 4pm and 5pm EDT</small></p>
+
+        @else
+
 
             <h2 class="lead border-left border-danger p-2"> {{number_format($number_of_new_tests)}} new tests today</h2>
 
             <p><small><a href="https://covidtracking.com/api/v1/us/current.json" target="_blank">source 1</a><a href="https://covidtracking.com/api/v1/us/daily.json" target="_blank"> | source 2</a></small></p>
+        @endif
 
             <h2 class="lead border-left border-danger p-2"> {{number_format($total_tests_data_today[0]["totalTestResults"])}} tests completed</h2>
             <p><small>since March 4, 2020 | <a href="https://covidtracking.com/api/v1/us/current.json" target="_blank">source</a></small></p>
