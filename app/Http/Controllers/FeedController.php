@@ -55,9 +55,13 @@ class FeedController extends Controller
         $crawler = $client->request('GET', 'https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx');
         
         
-		$filtered = $crawler->filterXPath('//*[@id="ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField"]/div/div/table/tbody/tr[52]')->children()->each(function ($node) {
+		$filtered = $crawler->filterXPath('//*[@id="ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField"]/div/div[1]/table/tbody/tr[52]')->children()->each(function ($node) {
           return $node->text(); 
         });
+
+
+    
+
 
 	return view('layouts.phl',compact('filtered')); 
 
@@ -89,10 +93,12 @@ class FeedController extends Controller
           return $node->text(); 
         });
 
-        // this is now probable cases, needs to be updated later. 
+        // this is now probable deaths, needs to be updated later. 
          $probable = $crawler->filter('#LC4')->children()->each(function ($node) {
           return $node->text(); 
         });
+
+
 
          // the label for each column gets put in the first position
          // if($cases[1])

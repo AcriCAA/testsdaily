@@ -16,7 +16,7 @@
             <th scope="col" >City</th>
             <th scope="col">Positive Cases</th>
             <th scope="col">Negative Cases</th>
-            <th scope="col">Deaths</th>
+            
             
           </tr>
         </thead>
@@ -34,10 +34,7 @@
           <td>
             {{$filtered[2]}}
           </td>
-            <td>
-            {{$filtered[3]}}
-          </td>
-
+            
          
 
        </tr>
