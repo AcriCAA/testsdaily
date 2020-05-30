@@ -118,6 +118,10 @@ class FeedController extends Controller
 
         $total_tests_data_today = $this->queryApi($query); 
 
+        $test_data_yesterday = $this->getDailyTestsUS();
+
+        $tests_increase_data_yesterday = $test_data_yesterday["totalTestResultsIncrease"]; 
+
       // verifying API was not down and returned data
       if(null !== $total_tests_data_today){
 
@@ -127,7 +131,7 @@ class FeedController extends Controller
         $selects = $this->generateDateSelectBox(); 
 
         
-        return view('testshome', compact('total_tests_data_today', 'number_of_new_tests', 'selects'));
+        return view('testshome', compact('tests_increase_data_yesterday','total_tests_data_today', 'number_of_new_tests', 'selects'));
 
       }
 

@@ -22,9 +22,15 @@
           <p class=""><small >{{$total_tests_data_today[0]["lastModified"]}}</small></p>
 
           @if($number_of_new_tests == 0)
-            <h2 class="lead border-left border-danger p-2">test numbers not yet updated for today</h2>
+        
 
-            <p><small>data is usually updated all the data each day between 4pm and 5pm EDT</small></p>
+            <h2 class="lead border-left border-danger p-2">
+            <strong>{{number_format($tests_increase_data_yesterday)}}</strong> test results were reported <em>*yesterday.</em></h2>
+            
+
+            <p><small>*test numbers not yet updated for today. Data is usually updated each day between 4pm and 5pm EDT</small></p>
+
+
 
         @else
 
