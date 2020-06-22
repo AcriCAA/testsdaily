@@ -13,7 +13,7 @@
       <table class="table table-striped">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" >City</th>
+            <th scope="col" >Date</th>
             <th scope="col">Positive Cases</th>
             <th scope="col">Negative Cases</th>
             
@@ -24,15 +24,17 @@
 
           <tr>
 
-           <td>
-            {{$filtered[0]}}
-          </td>            
+           
 
            <td>
-            {{number_format($filtered[1])}}
+           {{$date}} 
           </td>
           <td>
-            {{$filtered[2]}}
+            {{$positive}}
+          </td>
+
+          <td>
+            {{$negative}}
           </td>
             
          

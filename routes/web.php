@@ -36,3 +36,5 @@ Route::get('/phl', 'FeedController@showPhilly');
 
 Route::get('/nyc', 'FeedController@showNYC'); 
 
+Route::get('/testphl', 'PhillyController@getPHLCases'); 
+
