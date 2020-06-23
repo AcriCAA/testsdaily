@@ -18,7 +18,7 @@
             <th scope="col" >Date/Time Checked</th>
             <th scope="col">Positive Cases</th>
             @if($city=="Philadelphia")<th scope="col">Negative Cases</th>@endif
-            <th scope="col">Deaths</th> 
+           
             
           </tr>
         </thead>
@@ -39,10 +39,7 @@
           </td>
 
           @if($city=="Philadelphia")<td>{{$data->negatives}}</td>@endif
-          <td>
-            {{number_format($data->deaths)}}
-          </td>   
-
+        
         </tr>
 
   @endforeach
