@@ -196,7 +196,7 @@ $feed->previous_day = $feed->parsePreviousDate($feed->original_day);
 
 $feed->previous_day_formatted = $feed->formatDate($feed->previous_day); 
 
-$feed->state = request('state'); 
+$feed->state = strtolower(request('state')); 
 
 $feed->state_query = $feed->generateStateQuery($feed->state); 
 
