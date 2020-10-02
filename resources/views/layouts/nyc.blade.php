@@ -32,21 +32,21 @@
         
          <td>
         
-            {{number_format($cases[2])}}
+            {{$cases[2]}}
         
           </td>
            
            <td>
-            {{number_format($hospitalized[2])}}
+            {{$hospitalized[2]}}
         
           </td>
           <td>
-            {{number_format($deaths[2])}}
+            {{$deaths[2]}}
         
           </td>            
 
            <td>
-            {{number_format($probable[2])}}
+            {{$probable[2]}}
         
           </td>         
 
