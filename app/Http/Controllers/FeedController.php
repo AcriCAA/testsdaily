@@ -51,52 +51,25 @@ class FeedController extends Controller
 
  $result = PhillyController::getPhillyNow(); 
 
-  //this is positives
-       $positive = $result['rows'][1]['count']; 
-
-       //this is negatives; 
-       $negative = $result['rows'][0]['count']; 
-
-       $date = $result['rows'][0]['result_date'];
-
-// dd($result);     
-//         $client = new GoutteClient();
-        
-
-//   //       $crawler = $client->request('GET', 'https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx');
-        
-        
-// 		// $filtered = $crawler->filterXPath('//*[@id="ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField"]/div/div[1]/table/tbody/tr[52]')->children()->each(function ($node) {
-//   //         return $node->text(); 
-//   //       });
 
 
+ // dd($result); 
 
-//         $crawler = $client->request('GET', 'https://www.phila.gov/programs/coronavirus-disease-2019-covid-19/');
-
-
-//     // $filtered = $crawler->filterXPath('//*[@id="ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField"]/div/div[1]/table/tbody/tr[52]')->children()->each(function ($node) {
-//     //         return $node->text(); 
-//     //       });
-
-//           $filtered = $crawler->filterXPath('//*[@id="post-117905"]/section/section[1]/div/div/div[3]'); 
-
-//         //*[@id="post-117905"]/section/section[1]/div/div/div[3]
-
-//   // $filtered = $crawler->filter('#post-117905 > section > section:nth-child(1) > div > div > div:nth-child(5)')->each(function ($node) {
-//   //         return $node->text(); 
-//   //       });
-
-// dd($filtered); 
+       // "collection_date" => "2020-09-28T00:00:00Z"
 
 
+$parsed_today_yesterday = PhillyController::parseTodayYesterday($result); 
+// dd($parsed_today_yesterday); 
+  
+    // dd($filtered_results_array_today); 
+$filtered_results_array_today = $parsed_today_yesterday["filtered_results_array_today"]; 
+$filtered_results_array_yesterday = $parsed_today_yesterday["filtered_results_array_yesterday"]; 
 
-    
-
-return view('layouts.phl', compact('date', 'positive', 'negative'));
+return view('layouts.phl', compact('filtered_results_array_today','filtered_results_array_yesterday'));
 	// return view('layouts.phl',compact('filtered')); 
 
     }
+
 
 
     public function nycScrapeData(){
