@@ -41,7 +41,8 @@
         @endif
 
             <h2 class="lead border-left border-danger p-2"> {{number_format($total_tests_data_today[0]["totalTestResults"])}} tests completed</h2>
-            <p><small>since March 4, 2020 | <a href="https://covidtracking.com/api/v1/us/current.json" target="_blank">source</a></small></p>
+            <p><small>since March 4, 2020 | <a href="https://covidtracking.com/api/v1/us/current.json" target="_blank">source</a>. This is {{$percent_tested}}% of the U.S. Population based on current population numbers from <a href="https://www.census.gov/quickfacts/fact/table/US">U.S. Census Data</a></small></p>
+            
 
         </div>
 

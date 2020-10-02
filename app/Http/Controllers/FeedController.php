@@ -126,6 +126,16 @@ return view('layouts.phl', compact('filtered_results_array_today','filtered_resu
 
         $tests_increase_data_yesterday = $test_data_yesterday["totalTestResultsIncrease"]; 
 
+        $us_population = 328239523; 
+
+        if($total_tests_data_today[0]["totalTestResults"] > 0)
+          $percent_tested =   round($total_tests_data_today[0]["totalTestResults"]/$us_population*100); 
+        else 
+          $percent_tested = 0; 
+
+
+
+
       // verifying API was not down and returned data
       if(null !== $total_tests_data_today){
 
@@ -135,7 +145,7 @@ return view('layouts.phl', compact('filtered_results_array_today','filtered_resu
         $selects = $this->generateDateSelectBox(); 
 
         
-        return view('testshome', compact('tests_increase_data_yesterday','total_tests_data_today', 'number_of_new_tests', 'selects'));
+        return view('testshome', compact('tests_increase_data_yesterday','total_tests_data_today', 'number_of_new_tests', 'selects','us_population','percent_tested'));
 
       }
 
