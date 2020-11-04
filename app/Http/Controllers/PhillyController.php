@@ -11,6 +11,8 @@ use Goutte\Client as GoutteClient;
 
 use GuzzleHttp\Client;
 
+use App\PAMail; 
+
 use Carbon\Carbon; 
 
 class PhillyController extends Controller
@@ -72,6 +74,17 @@ if($response->getStatusCode() == 200){
 
   ]; 
 }
+
+
+$mailins = new PAMail(); 
+
+$mailins->ballots_cast = $result['ballots_cast']; 
+$mailins->ballots_counted = $result['ballots_counted']; 
+$mailins->ballots_remaining = $result['ballots_remaining'];   
+
+$mailins->save(); 
+
+
 
  
 return view('layouts.phlmail', compact('result', 'source')); 
