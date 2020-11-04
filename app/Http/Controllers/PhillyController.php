@@ -22,6 +22,8 @@ class PhillyController extends Controller
      $client = new Client();
 $curlstring = 'https://data.pa.gov/resource/pg3c-9a9m.json';
 
+
+$source = $curlstring; 
 $result = null; 
 
 $response = $client->get($curlstring);
@@ -72,7 +74,7 @@ if($response->getStatusCode() == 200){
 }
 
  
-return view('layouts.phlmail', compact('result')); 
+return view('layouts.phlmail', compact('result', 'source')); 
 
    
 
