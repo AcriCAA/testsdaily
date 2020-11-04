@@ -16,6 +16,67 @@ use Carbon\Carbon;
 class PhillyController extends Controller
 {
     //
+
+  public function getMail(){
+
+     $client = new Client();
+$curlstring = 'https://data.pa.gov/resource/pg3c-9a9m.json';
+
+$result = null; 
+
+$response = $client->get($curlstring);
+
+if($response->getStatusCode() == 200){
+
+  $data = $response->getBody()->getContents();
+  
+  $result = json_decode($data, true);
+
+  // $result = $data; 
+
+  $ballots_issued_to_voters = 0; 
+  $ballots_counted = 0; 
+  $ballots_cast = 0; 
+
+  $ballots_remaining = 0; 
+
+  foreach($result as $r){
+
+    $ballots_issued_to_voters += $r['ballots_issued_to_voters']; 
+
+    $ballots_cast += $r['ballots_cast']; 
+
+    $ballots_counted += $r['ballots_counted']; 
+
+    $ballots_remaining += $r['ballots_remaining']; 
+
+  }
+
+  $percent_remaining = $ballots_remaining/$ballots_cast; 
+
+  $result = [
+
+
+    // 'ballots_issued_to_voters' => $ballots_issued_to_voters, 
+
+    'ballots_cast' => $ballots_cast,  
+
+    'ballots_counted' => $ballots_counted,
+
+    'ballots_remaining' => $ballots_remaining,  
+
+    'percent_remaining' => $percent_remaining, 
+
+
+  ]; 
+}
+
+ 
+return view('layouts.phlmail', compact('result')); 
+
+   
+
+  }
 	public static function getPHLCases(){
 
 

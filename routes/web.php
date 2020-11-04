@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['register' => false]);
 
 
+
+Route::get('mail', 'PhillyController@getMail'); 
+
+
 Route::get('/', 'FeedController@index'); 
 
 Route::post('/store', 'FeedController@comparePage'); 
