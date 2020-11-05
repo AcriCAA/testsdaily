@@ -62,6 +62,9 @@ if($response->getStatusCode() == 200){
 
   $phl = 0; 
   $pitt = 0; 
+  $chester = 0; 
+  $mont = 0; 
+  $del = 0; 
 
   $other = 0; 
 
@@ -69,13 +72,15 @@ if($response->getStatusCode() == 200){
 
     $isphl = strcasecmp($rr["county"], "PHILADELPHIA");
     $ispitt = strcasecmp($rr["county"], "ALLEGHENY"); 
-  
+     $ischester = strcasecmp($rr["county"], "CHESTER"); 
+  $ismont = strcasecmp($rr["county"], "MONTGOMERY"); 
+  $isdel = strcasecmp($rr["county"], "DELAWARE"); 
 
     
 
     
 
-    if($ispitt == 0 || $isphl == 0){
+    if($ispitt == 0 || $isphl == 0 || $ischester == 0 || $isdel == 0 || $ismont == 0){
       if($isphl == 0){
 
       $phl += $rr["ballots_remaining"]; 
@@ -85,6 +90,26 @@ if($response->getStatusCode() == 200){
     if($ispitt == 0){
 
       $pitt += $rr["ballots_remaining"]; 
+
+    }
+
+    if($ischester == 0){
+
+      $chester += $rr["ballots_remaining"]; 
+
+    }
+
+
+    if($ismont == 0){
+
+      $mont += $rr["ballots_remaining"]; 
+
+    }
+
+
+    if($isdel == 0){
+
+      $del += $rr["ballots_remaining"]; 
 
     }
 
@@ -142,7 +167,7 @@ $mailins->save();
 
 
  
-return view('layouts.phlmail', compact('result', 'source', 'phl', 'pitt', 'other')); 
+return view('layouts.phlmail', compact('result', 'source', 'phl', 'pitt', 'other', 'chester', 'mont', 'del')); 
 
    
 

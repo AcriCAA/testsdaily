@@ -22,6 +22,9 @@
   <h2>Key County Ballot counts remaining</h2>
 <p>Philadelphia: {{number_format($phl)}}</p>
 <p>Allegheny (Pitts): {{number_format($pitt)}}</p>
+<p>Chester: {{number_format($chester)}}</p>
+<p>Montgomery: {{number_format($mont)}}</p>
+<p>Delaware: {{number_format($del)}}</p>
 <p>Sum of all other remaining county ballots: {{number_format($other)}}</p>
 
 
