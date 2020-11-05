@@ -20,9 +20,9 @@
   <hr>
 
   <h2>Key County Ballot counts remaining</h2>
-<p>Philadelphia: {{$phl}}</p>
-<p>Allegheny (Pitts): {{$pitt}}</p>
-<p>Sum of all other remaining county ballots: {{$other}}</p>
+<p>Philadelphia: {{number_format($phl)}}</p>
+<p>Allegheny (Pitts): {{number_format($pitt)}}</p>
+<p>Sum of all other remaining county ballots: {{number_format($other)}}</p>
 
 
   @endsection

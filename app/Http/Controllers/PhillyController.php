@@ -67,21 +67,43 @@ if($response->getStatusCode() == 200){
 
   foreach ($results_raw as $rr){
 
-    if(strcasecmp($rr["county"], "PHILADELPHIA")){
+    $isphl = strcasecmp($rr["county"], "PHILADELPHIA");
+    $ispitt = strcasecmp($rr["county"], "ALLEGHENY"); 
+  
+
+    
+
+    
+
+    if($ispitt == 0 || $isphl == 0){
+      if($isphl == 0){
 
       $phl += $rr["ballots_remaining"]; 
 
     }
 
-    if(strcasecmp($rr["county"], "ALLEGHENY") == 0){
+    if($ispitt == 0){
 
       $pitt += $rr["ballots_remaining"]; 
 
     }
 
-    if(strcasecmp($rr["county"], "ALLEGHENY") != 0 && strcasecmp($rr["county"], "PHILADELPHIA") != 0)
-      $other += $rr["ballots_remaining"]; 
 
+
+    }
+    else{
+  
+      $other += $rr["ballots_remaining"]; 
+    }
+    
+
+    // echo '<pre>';
+    // var_dump($rr["county"]); 
+    // var_dump($isphl); 
+    
+    // var_dump($rr["county"]); 
+    // var_dump($ispitt); 
+    // echo '</pre>';
 
 
 
