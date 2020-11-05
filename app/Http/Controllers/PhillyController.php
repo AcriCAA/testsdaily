@@ -36,6 +36,8 @@ if($response->getStatusCode() == 200){
   
   $result = json_decode($data, true);
 
+  $results_raw = $result; 
+
   // $result = $data; 
 
   $ballots_issued_to_voters = 0; 
@@ -57,6 +59,37 @@ if($response->getStatusCode() == 200){
   }
 
   $percent_remaining = $ballots_remaining/$ballots_cast; 
+
+  $phl = 0; 
+  $pitt = 0; 
+
+  $other = 0; 
+
+  foreach ($results_raw as $rr){
+
+    if(strcasecmp($rr["county"], "PHILADELPHIA")){
+
+      $phl += $rr["ballots_remaining"]; 
+
+    }
+
+    if(strcasecmp($rr["county"], "ALLEGHENY") == 0){
+
+      $pitt += $rr["ballots_remaining"]; 
+
+    }
+
+    if(strcasecmp($rr["county"], "ALLEGHENY") != 0 && strcasecmp($rr["county"], "PHILADELPHIA") != 0)
+      $other += $rr["ballots_remaining"]; 
+
+
+
+
+
+
+
+
+  }
 
   $result = [
 
@@ -87,7 +120,7 @@ $mailins->save();
 
 
  
-return view('layouts.phlmail', compact('result', 'source')); 
+return view('layouts.phlmail', compact('result', 'source', 'phl', 'pitt', 'other')); 
 
    
 
