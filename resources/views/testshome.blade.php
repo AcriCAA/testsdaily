@@ -158,12 +158,11 @@
             
                 <div class="col border-left border-primary">
                     <h2>City data</h2>
-                    <p><small>*data scraped from select city data sources</small></p>
+                    {{-- <p><small>*data scraped from select city data sources</small></p> --}}
                     <h3>Philadelphia</h3>
-                    <p><a href="/phlquick">now</a> | <a href="/phl">daily (previous days)</a></p>
+                    <p><a href="/phlquick" target="_blank">now</a> | <a href="/phl">daily (previous days)</a></p>
                     <h3>New York City</h3>
-                    
-                    <p><a href="/nycquick">now</a> | <a href="/nyc">daily (previous days)</a></p>
+                    <p><a href="/nycquick" target="_blank">now</a> | <a href="/nyc">daily (previous days)</a></p>
                 </div>
             
             <div class="row mt-3">

@@ -189,7 +189,8 @@ return view('layouts.phlmail', compact('result', 'source', 'phl', 'pitt', 'other
 
 $result = PhillyController::getPhillyNow(); 
 
-// dd($result);   
+
+dd($result);   
 
 $parsed_today_yesterday = PhillyController::parseTodayYesterday($result); 
 
@@ -231,6 +232,8 @@ public static function getPhillyNow(){
     $client = new Client();
 
  $curlstring = 'https://phl.carto.com/api/v2/sql?q=SELECT collection_date,count,test_result FROM covid_cases_by_date WHERE collection_date >= current_date - 7';
+
+ 
 
  // 'https://phl.carto.com/api/v2/sql?q=SELECT result_date,%20test_result%20,count%20FROM%20covid_cases_by_date WHERE result_date = current_date - 3';
  
