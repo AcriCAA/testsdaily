@@ -242,7 +242,7 @@ public function getDailyTestsUS(){
     $previous_day = $dt->subDay(); 
     $date_string = strtotime($previous_day); 
     
-    $formatted_date_value = date('Ymd', $date_string);
+    $formatted_date_value = date('Y-m-d', $date_string);
 
     //find the data for the previous day
     $key = array_search($formatted_date_value, array_column($all_day_data,'date'));
@@ -329,6 +329,7 @@ else{
     $curlstring.= $query; 
 
 }
+
 
 $response = $client->get($curlstring);
 

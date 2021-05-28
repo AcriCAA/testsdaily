@@ -18,22 +18,29 @@ Auth::routes(['register' => false]);
 
 
 
-Route::get('mail', 'PhillyController@getMail'); 
+// Route::get('mail', 'PhillyController@getMail'); 
 
 
-Route::get('/', 'FeedController@index'); 
+// Route::get('/', 'FeedController@index'); 
 
-Route::post('/store', 'FeedController@comparePage'); 
+// Route::post('/store', 'FeedController@comparePage'); 
 
-Route::post('/previousday', 'FeedController@comparePage'); 
+// Route::post('/previousday', 'FeedController@comparePage'); 
 
-Route::get('/dates', 'FeedController@generateDateSelectBox'); 
+// Route::get('/dates', 'FeedController@generateDateSelectBox'); 
 
-Route::get('/compare/{feed}','FeedController@show')->name('compare');
+// Route::get('/compare/{feed}','FeedController@show')->name('compare');
 
 // Route::get('/phlquick', 'FeedController@phillyScrapeData'); 
 
 // Route::get('/nycquick', 'FeedController@nycScrapeData'); 
+
+Route::get('/', function(){
+
+
+	return redirect('https://covid.cdc.gov/covid-data-tracker/#datatracker-home'); 
+
+}
 
 Route::get('/phlquick', function(){
 
@@ -60,9 +67,9 @@ Route::get('/nycquick', function(){
 );
 
 
-Route::get('/phl', 'FeedController@showPhilly'); 
+// Route::get('/phl', 'FeedController@showPhilly'); 
 
-Route::get('/nyc', 'FeedController@showNYC'); 
+// Route::get('/nyc', 'FeedController@showNYC'); 
 
-Route::get('/testphl', 'PhillyController@getPHLCases'); 
+// Route::get('/testphl', 'PhillyController@getPHLCases'); 
 
